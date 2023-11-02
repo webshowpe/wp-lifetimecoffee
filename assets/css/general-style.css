@@ -1,0 +1,292 @@
+/* Cargar Fahkwang: Bold(700) */
+@import url('https://fonts.googleapis.com/css2?family=Fahkwang:wght@700&display=swap');
+/* Cargar DMSans: Regular(400), Bold(700) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap');
+
+
+/*--------------------------------------------------------------
+## General
+--------------------------------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+}
+
+:root {
+  --Fondo: #F1EEEA;
+  --Texto-Principal: #000000;
+  --Texto-Secundario: #4A4A4A;
+  --Bordes: #C7C7C7;
+  --Bordes-Marcados: #AFAFAF;
+  --Amarillo-Golden: #F4CF49;
+  --Amarillo-Hover: #F2D66E;
+  --Verde-Claro: #B0D0A1;
+  --Marron-Claro: #C3BB91;
+  --Fondo-Banner: #1B1B1B;
+}
+
+::-moz-selection { /* Code for Firefox */
+  background: #87c66a94;
+}
+
+::selection {
+  background: #87c66a94;
+}
+
+body {
+  background-color: var(--Fondo);
+}
+
+a {
+  text-decoration: none;
+  color: var(--Texto-Principal);
+}
+hr {
+  background: var(--Bordes);
+  height: 1px;
+  border: 0;
+}
+
+
+/*--------------------------------------------------------------
+## Textos predefinidos
+--------------------------------------------------------------*/
+.desktop-h1 {
+  color: var(--Texto-Principal);
+  font-family: 'Fahkwang', sans-serif;
+  font-size: 57px;
+  font-weight: 700;
+  line-height: 130%;
+  text-transform: uppercase;
+}
+.desktop-h2 {
+  color: var(--Texto-Principal);
+  font-family: 'Fahkwang', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.desktop-parrafo-grande {
+  color: var(--Texto-Principal);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+}
+.desktop-parrafo {
+  color: var(--Texto-Principal);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+.desktop-span {
+  color: var(--Text-Principal);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+/*--------------------------------------------------------------
+## Botones
+--------------------------------------------------------------*/
+.btn-primary {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 16px 30px;
+  background-color: var(--Amarillo-Golden);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease-in-out;
+  text-transform: uppercase;
+}
+.btn-primary:hover {
+  background-color: var(--Amarillo-Hover);
+}
+
+
+/*--------------------------------------------------------------
+## Estructura para secciones (parte de ella esta en el .php)
+--------------------------------------------------------------*/
+.wrap-grande {
+  position: relative; 
+  max-width: 1700px; /* Pantallas ligeramente mas grandes */
+  margin: auto;
+}
+
+.wrap-container {
+  max-width: 1440px; /* Max-width del figma */
+  padding: 0 80px;
+  margin: auto;
+}
+
+
+/*--------------------------------------------------------------
+## Navegación Principal
+--------------------------------------------------------------*/
+
+.nav-desktop {
+  border-bottom: 1px solid var(--Bordes-Marcados);
+  background: var(--Fondo);
+  backdrop-filter: blur(10.5px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav-desktop .sub-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.nav-desktop .container {
+  display: flex;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-desktop .container .main-menu {
+  display: flex;
+  gap: 45px;
+  list-style: none;
+}
+.nav-desktop .container .main-menu a {
+  text-transform: uppercase;
+}
+.nav-desktop .nav-actions {
+  display: flex;
+  gap: 35px;
+}
+
+
+/*--------------------------------------------------------------
+## Sección HERO (parte de ella esta en el .php)
+--------------------------------------------------------------*/
+.sec-hero .wrap-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 260px;
+  gap: 28px;
+}
+
+.sec-hero .txt-hero {
+  color: var(--Fondo);
+  width: 730px;
+}
+
+/*--------------------------------------------------------------
+## Sección Envíos a todo el Perú
+--------------------------------------------------------------*/
+
+.sec-envios-scroll {
+  overflow: hidden;
+  border-top: 1px solid var(--Bordes);
+  border-bottom: 1px solid var(--Bordes);
+}
+.wrapper-envios-scroll {
+  padding-block: 25px;
+  display: flex;
+  gap: 160px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+.wrapper-envios-scroll li {
+  list-style: none;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 80px));
+  }
+}
+
+
+/*--------------------------------------------------------------
+## Sección de Cuidamos de ti y el medio ambiente
+--------------------------------------------------------------*/
+.sec-cuidamos {
+  display: flex;
+  flex-wrap: wrap;
+  padding-block: 160px;
+  flex-direction: column;
+  gap: 160px;
+}
+
+.sec-cuidamos .sec-part {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 150px;
+  align-items: start;
+}
+.sec-cuidamos .sec-part .wrapper-text {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: sticky;
+  top: 105px;
+}
+
+.deco-cafe {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+/*--------------------------------------------------------------
+## Sección de Categorias
+--------------------------------------------------------------*/
+.sec-categories {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 150px;
+  padding-bottom: 160px;
+  gap: 90px;
+}
+.sec-categories .cards {
+  display: flex;
+  gap: 40px;
+}
+.sec-categories .cards > div {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: var(--Marron-Claro);
+  padding: 38px;
+}
+.sec-categories .cards a {
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Sección de Trazabilidad (parte de ella esta en el .php)
+--------------------------------------------------------------*/
+.sec-trazabilidad {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 99px;
+}
+.sec-trazabilidad .cta {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+}
+.sec-trazabilidad .cta h2 {
+  width: 840px;
+  text-align: center;
+}
