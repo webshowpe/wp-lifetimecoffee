@@ -14,3 +14,21 @@ function btn_primary($text, $link) {
     </a>
   <?php
 }
+
+// Banner de fondo yute
+function banner_oscuro($title, $imagename) {
+  $text = esc_html($title);
+  $imagename = esc_html($imagename);
+
+  ?>
+    <div class="sec-trazabilidad">
+      <div class="cta">
+        <h2 class="desktop-h1" style="color: var(--Fondo)"><?= $title ?></h2>
+        <?php btn_primary("SABER MÁS", "https://diegoamorin.com") ?>
+      </div>
+      <img
+        src="<?php echo get_template_directory_uri(); ?>/assets/imgs/<?= $imagename ?>"
+        alt="" width="970px" />
+    </div>
+  <?php
+}
