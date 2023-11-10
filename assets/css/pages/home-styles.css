@@ -1,0 +1,275 @@
+/*--------------------------------------------------------------
+## Sección HERO (parte de ella esta en el .php)
+--------------------------------------------------------------*/
+.sec-hero .wrap-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 260px;
+  gap: 28px;
+}
+
+.sec-hero .txt-hero {
+  color: var(--Fondo);
+  width: 730px;
+}
+
+/*--------------------------------------------------------------
+## Sección Envíos a todo el Perú
+--------------------------------------------------------------*/
+
+.sec-envios-scroll {
+  overflow: hidden;
+  border-top: 1px solid var(--Bordes);
+  border-bottom: 1px solid var(--Bordes);
+}
+
+.wrapper-envios-scroll {
+  padding-block: 25px;
+  display: flex;
+  gap: 160px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.wrapper-envios-scroll li {
+  list-style: none;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 80px));
+  }
+}
+
+
+/*--------------------------------------------------------------
+## Sección de Cuidamos de ti y el medio ambiente
+--------------------------------------------------------------*/
+.sec-cuidamos {
+  display: flex;
+  flex-wrap: wrap;
+  padding-block: 160px;
+  flex-direction: column;
+  gap: 160px;
+}
+
+.sec-cuidamos .sec-part {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 150px;
+  align-items: start;
+}
+
+.sec-cuidamos .sec-part .wrapper-text {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: sticky;
+  top: 105px;
+}
+
+.deco-cafe {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+/*--------------------------------------------------------------
+## Sección de Categorias
+--------------------------------------------------------------*/
+.sec-categories {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 150px;
+  padding-bottom: 160px;
+  gap: 90px;
+}
+
+.sec-categories .cards {
+  display: flex;
+  gap: 40px;
+}
+
+.sec-categories .cards>div {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: var(--Marron-Claro);
+  padding: 38px;
+}
+
+.sec-categories .cards .btn-primary {
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Sección de Trazabilidad (parte de ella esta en el .php)
+--------------------------------------------------------------*/
+.sec-trazabilidad {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 99px;
+}
+
+.sec-trazabilidad .cta {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+}
+
+.sec-trazabilidad .cta h2 {
+  width: 840px;
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Sección de Productos destacados
+--------------------------------------------------------------*/
+.sec-prod-dest {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  padding-top: 150px;
+  padding-bottom: 160px;
+  gap: 90px;
+}
+
+.sec-prod-dest .cards-products {
+  display: grid;
+  gap: 40px;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding-bottom: 28px;
+  /* Snap wrapper */
+  scroll-snap-type: inline mandatory;
+}
+
+.sec-prod-dest .card-product {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  padding: 25px 16px;
+  width: 290px;
+  background-color: var(--Verde-Claro);
+  transition: background-color 0.3s ease-in-out;
+  /* Snap item */
+  scroll-snap-align: start;
+}
+
+.sec-prod-dest .card-product .desc-product {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+}
+
+.sec-prod-dest .card-product hr {
+  width: 100%;
+}
+
+.sec-prod-dest .card-product:hover {
+  background-color: #F4CF49;
+}
+
+.sec-prod-dest .deco-cafe-3 {
+  position: absolute;
+  top: 0;
+  width: 475px;
+  right: 80px;
+}
+
+/*--------------------------------------------------------------
+## Sección de Reviews de clientes
+--------------------------------------------------------------*/
+.sec-reviews {
+  padding: 160px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 89px;
+}
+
+.sec-reviews .reviews {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 40px;
+  width: 1060px;
+}
+
+.reviews .review {
+  display: grid;
+  gap: 20px;
+}
+
+.reviews .review>div {
+  display: grid;
+  gap: 18px;
+  padding: 45px 50px;
+  z-index: 1;
+  /* style */
+  background-color: var(--Marron-Claro);
+  border-radius: 10px 10px 10px 0;
+}
+
+.deco-cafe4 {
+  position: absolute;
+  width: 526px;
+  bottom: 0px;
+  right: 0px;
+}
+
+
+/*--------------------------------------------------------------
+## Sección de preguntas frecuentes
+--------------------------------------------------------------*/
+.sec-faq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 89px;
+  width: 840px;
+  padding: 150px 0 160px 0;
+  /* override padding */
+}
+
+.sec-faq .faqs .faq>div {
+  display: flex;
+  padding: 25px 0px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--Bordes-Marcados);
+  cursor: pointer;
+}
+
+.sec-faq .faqs .faq>div img {
+  transition: transform 0.25s ease-in;
+}
+
+.sec-faq .faqs .faq>p {
+  height: 0px;
+  overflow-y: hidden;
+  transition: height 0.25s ease-in;
+}
+
+/* Cuando esta activo */
+.sec-faq .faqs .faq.active>div {
+  border-bottom: inherit;
+}
+
+.sec-faq .faqs .faq.active>div img {
+  transform: rotate(180deg);
+}
+
+.sec-faq .faqs .faq.active>p {
+  border-bottom: 1px solid var(--Bordes-Marcados);
+}
