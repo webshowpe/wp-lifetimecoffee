@@ -35,12 +35,11 @@ add_action('wp_enqueue_scripts', 'lifetime_load_styles_and_scripts');
 // Definir ubicaciones de menu
 function lifetime_set_menu_locations() {
   $locations = array(
-    "top-desktop" => "Menú que aparece en el menú principal en el formato PC"
+    "top-desktop" => "Menú que aparece en el menú principal en el formato PC",
+    "bottom-desktop" => "Menú que aparece en el footer en el extremo derecho",
   );
 
   register_nav_menus($locations);
 }
 
 add_action('after_setup_theme', 'lifetime_set_menu_locations');
-
-

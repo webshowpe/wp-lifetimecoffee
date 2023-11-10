@@ -44,6 +44,9 @@ a {
   text-decoration: none;
   color: var(--Texto-Principal);
 }
+li {
+  list-style: none;
+}
 hr {
   background: var(--Bordes);
   height: 1px;
@@ -140,34 +143,88 @@ hr {
   top: 0;
   z-index: 10;
 }
-.nav-desktop .sub-menu {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
 
-.nav-desktop .container {
+.nav-desktop .wrap-container {
   display: flex;
-  padding-top: 11px;
-  padding-bottom: 11px;
   justify-content: space-between;
   align-items: center;
 }
 
-.nav-desktop .container .main-menu {
+.nav-desktop .main-menu {
   display: flex;
   gap: 45px;
   list-style: none;
 }
-.nav-desktop .container .main-menu a {
+
+.nav-desktop .main-menu a {
   text-transform: uppercase;
+  padding: 27px 0 27px 0;
 }
 .nav-desktop .nav-actions {
   display: flex;
   gap: 35px;
 }
 
+.nav-desktop .main-menu li {
+  transition: all 1s ease-in-out;
+}
+
+.nav-desktop .main-menu li>a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-desktop .main-menu li svg {
+  transition: transform 0.25s ease-in-out;
+}
+
+.nav-desktop .main-menu li:hover svg {
+  transform: rotate(180deg);
+}
+
+.nav-desktop .sub-menu {
+  position: absolute;
+  display: none;
+  padding: 0 30px;
+  background-color: var(--Fondo);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.nav-desktop .main-menu li:hover .sub-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+/*--------------------------------------------------------------
+## Footer general
+--------------------------------------------------------------*/
+.sec-footer {
+  display: flex;
+  gap: 40px;
+  padding-top: 97px;
+  padding-bottom: 97px;
+}
+.sec-footer .col {
+  width: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+.sec-footer .col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sec-copyright {
+  display: flex;
+  justify-content: center;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+footer.wrap-grande {
+  margin-top: 160px;
+}
 
 /*--------------------------------------------------------------
 ## Sección HERO (parte de ella esta en el .php)
