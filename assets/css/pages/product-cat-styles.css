@@ -1,3 +1,106 @@
 /*--------------------------------------------------------------
 ## Sección Hero de la categoria
 --------------------------------------------------------------*/
+.sec-cat-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 339px;
+  padding-top: 95px;
+}
+
+.sec-body {
+  display: flex;
+  gap: 72px;
+}
+
+/*--------------------------------------------------------------
+## Sección sidebar para filtros
+--------------------------------------------------------------*/
+.sec-body .sidebar {
+  width: 258px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.sec-body .sidebar > div {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.custom-check {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background: var(--Fondo);
+  border: 1px solid var(--Texto-Secundario);
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+.custom-check input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+}
+.custom-check .icon-check {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  display: none;
+}
+
+.custom-check.checked {
+  background-color: var(--Amarillo-Golden);
+}
+.custom-check.checked .icon-check {
+  display: block;
+}
+
+.filter-category .opciones {
+  gap: 0px;
+}
+
+.filter-category .opciones a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--Bordes);
+}
+
+.filter-category .opciones img {
+  transform: rotate(-90deg);
+}
+
+.filter-category .category.selected {
+  background: var(--Amarillo-Golden);
+}
+.filter-category .category.selected img {
+  opacity: 0;
+}
+
+/*--------------------------------------------------------------
+## Sección de lista de productos
+--------------------------------------------------------------*/
+
+.sec-body .product-list {
+  /* Quiero que esta seccion tome el ancho restante y GPT medio */
+  flex-grow: 1;
+  flex-basis: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}

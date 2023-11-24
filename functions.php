@@ -18,7 +18,7 @@ add_action('after_setup_theme', 'lifetime_add_woocommerce_support');
 --------------------------------------------------------------*/
 function lifetime_load_styles_and_scripts() {
   $version = wp_get_theme()->get('Version');
-  $parent_style = 'generalstyle';
+  $parent_style = 'general-style';
 
   // Encolar en todo el tema
   wp_enqueue_style(
@@ -28,7 +28,7 @@ function lifetime_load_styles_and_scripts() {
   );
 
   wp_enqueue_script(
-    'generalscript',
+    'general-script',
     get_template_directory_uri() . '/assets/js/general-script.js',
     array(), $version, true
   );
@@ -36,16 +36,23 @@ function lifetime_load_styles_and_scripts() {
   // Encolar en front_page.php
   if (is_front_page()) {
     wp_enqueue_style(
-      'homestyle',
+      'home-style',
       get_template_directory_uri() . '/assets/css/pages/home-styles.css',
       array($parent_style), $version, 'all'
     );
 
     wp_enqueue_script(
-      'homescript',
+      'home-script',
       get_template_directory_uri() . '/assets/js/pages/home-scripts.js',
       array(), $version, true
     );
+
+    wp_enqueue_style(
+      'product-card',
+      get_template_directory_uri() . '/assets/css/components/product-card.css',
+      array($parent_style), $version, 'all'
+    );
+
   }
 
   // Encolar en la taxonomia de productos de woocommerce
@@ -56,6 +63,12 @@ function lifetime_load_styles_and_scripts() {
       array($parent_style), $version, 'all'
     );
 
+    wp_enqueue_style(
+      'product-card',
+      get_template_directory_uri() . '/assets/css/components/product-card.css',
+      array($parent_style), $version, 'all'
+    );
+    
     wp_enqueue_script(
       'productcatscript',
       get_template_directory_uri() . '/assets/js/pages/product-cat-scripts.js',

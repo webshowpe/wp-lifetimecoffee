@@ -32,3 +32,34 @@ function banner_oscuro($title, $imagename) {
     </div>
   <?php
 }
+
+// Tarjeta de producto
+function tarjeta_producto($title, $url_image, $url, $price) {
+  ?>
+  <a class="card-product" href="<?= $url ?>">
+    <img src="<?= $url_image ?>" alt="<?= $title ?>">
+    <div class="desc-product">
+      <h4 class="desktop-parrafo"><?= $title ?></h4>
+      <hr/>
+      <span>S/. <?= $price ?></span>
+    </div>
+  </a>
+  <?php
+}
+
+
+function lifetime_checkbox($label, $name, $value) {
+  ?>
+  <div style="display: flex; align-items: center; gap: 15px;">
+    <div class="custom-check">
+      <input type="checkbox" id=<?= $value ?> name=<?= $name ?> value=<?= $value ?>>
+      <svg class="icon-check" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.01 2.50879L5.99625 13.5113L0.99 8.50504L0 9.49504L5.99625 15.5025L18 3.49879L17.01 2.50879Z" fill="#4A4A4A"/>
+      </svg>
+    </div>
+    <label for=<?= $value ?>>
+      <?= $label ?>
+    </label>
+  </div>
+  <?php
+}

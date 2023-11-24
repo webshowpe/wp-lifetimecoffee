@@ -78,7 +78,6 @@
           /* Obtener 16 últimos productos destacados
             Referencia: https://stackoverflow.com/a/46247028
           */
-
           $tax_query[] = array(
             'taxonomy' => 'product_visibility',
             'field' => 'name',
@@ -96,30 +95,27 @@
             'tax_query' => $tax_query
           ]);
 
-          if ($query->have_posts()):
-            while ($query->have_posts()):
+          if ($query->have_posts()) {
+            while ($query->have_posts()) {
               $query->the_post();
               
               // Obtener el objeto de producto de WooCommerce con el ID
               global $product;
               $product = wc_get_product(get_the_ID());
-              ?>
-              
-              <a class="card-product" href="<?php echo get_permalink(); ?>">
-                <img src="<?= get_the_post_thumbnail_url() ?>" alt="<?= the_title(); ?>">
-                <div class="desc-product">
-                  <h4 class="desktop-parrafo"><?php the_title();?></h4>
-                  <hr/>
-                  <span>S/. <?php echo $product->get_regular_price(); ?></span>
-                </div>
-              </a>
-          <?php
-            endwhile;
+
+              tarjeta_producto(
+                title:      get_the_title(),
+                url_image:  get_the_post_thumbnail_url(),
+                url:        get_permalink(),
+                price:      $product->get_regular_price()
+              );
+            }
+
             wp_reset_postdata();
-          else:
-          ?>
-            <span>No hay productos destacados disponibles</span>
-          <?php endif; ?>
+          } else {
+            echo "<span>No hay productos destacados disponibles</span>";
+          }
+        ?>
       </div>
     </div>
   </div>
