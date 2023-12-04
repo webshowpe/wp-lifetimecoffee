@@ -35,6 +35,7 @@ function lifetime_load_styles_and_scripts() {
 
   // Encolar en front_page.php
   if (is_front_page()) {
+    // Estilos y script de página
     wp_enqueue_style(
       'home-style',
       get_template_directory_uri() . '/assets/css/pages/home-styles.css',
@@ -47,47 +48,74 @@ function lifetime_load_styles_and_scripts() {
       array(), $version, true
     );
 
+    // Cargar componente product-card
     wp_enqueue_style(
       'product-card',
       get_template_directory_uri() . '/assets/css/components/product-card.css',
       array($parent_style), $version, 'all'
     );
 
+    // Cargar componente acordeon
+    wp_enqueue_style(
+      'acordeon',
+      get_template_directory_uri() . '/assets/css/components/acordeon.css',
+      array($parent_style), $version, 'all'
+    );
+    wp_enqueue_script(
+      'acordeon',
+      get_template_directory_uri() . '/assets/js/components/acordeon.js',
+      array(), $version, true
+    );
   }
 
   // Encolar en taxonomy-product_cat.php
   if (is_tax('product_cat')) {
+    // Estilos y scripts de página
     wp_enqueue_style(
       'productcatstyle',
       get_template_directory_uri() . '/assets/css/pages/product-cat-styles.css',
       array($parent_style), $version, 'all'
     );
-
-    wp_enqueue_style(
-      'product-card',
-      get_template_directory_uri() . '/assets/css/components/product-card.css',
-      array($parent_style), $version, 'all'
-    );
-    
     wp_enqueue_script(
       'productcatscript',
       get_template_directory_uri() . '/assets/js/pages/product-cat-scripts.js',
       array(), $version, true
     );
+
+    // Cargar componente product-card
+    wp_enqueue_style(
+      'product-card',
+      get_template_directory_uri() . '/assets/css/components/product-card.css',
+      array($parent_style), $version, 'all'
+    );
   }
 
   // Encolar en single-product.php
   if (is_singular( 'product' )) {
+    // Estilos de página
     wp_enqueue_style(
       'product-detail-style',
       get_template_directory_uri() . '/assets/css/pages/product-detail-styles.css',
       array($parent_style), $version, 'all'
     );
-
+    
+    // Cargar componente product-card
     wp_enqueue_style(
       'product-card',
       get_template_directory_uri() . '/assets/css/components/product-card.css',
       array($parent_style), $version, 'all'
+    );
+
+    // Cargar componente acordeon
+    wp_enqueue_style(
+      'acordeon',
+      get_template_directory_uri() . '/assets/css/components/acordeon.css',
+      array($parent_style), $version, 'all'
+    );
+    wp_enqueue_script(
+      'acordeon',
+      get_template_directory_uri() . '/assets/js/components/acordeon.js',
+      array(), $version, true
     );
   }
 }

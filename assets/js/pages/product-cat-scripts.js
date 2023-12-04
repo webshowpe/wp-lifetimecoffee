@@ -26,7 +26,6 @@ let segmentos = urlActual.split("/");
 let categoriaActual = segmentos[segmentos.length - 2];
 
 let categorias = document.querySelectorAll("a.category");
-console.log(categorias);
 
 categorias.forEach((category) => {
     if (category.id === categoriaActual) {
