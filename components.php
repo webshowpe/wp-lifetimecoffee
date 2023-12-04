@@ -48,18 +48,33 @@ function tarjeta_producto($title, $url_image, $url, $price) {
 }
 
 
-function lifetime_checkbox($label, $name, $value) {
+function lifetime_faqs() {
   ?>
-  <div style="display: flex; align-items: center; gap: 15px;">
-    <div class="custom-check">
-      <input type="checkbox" id=<?= $value ?> name=<?= $name ?> value=<?= $value ?>>
-      <svg class="icon-check" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.01 2.50879L5.99625 13.5113L0.99 8.50504L0 9.49504L5.99625 15.5025L18 3.49879L17.01 2.50879Z" fill="#4A4A4A"/>
-      </svg>
+  <div class="wrap-container sec-faq">
+      <h2 class="desktop-h2">ACLAREMOS TUS DUDAS</h2>
+      <div class="faqs">
+        <div class="faq">
+          <div>
+            <p class="desktop-parrafo-grande">¿Hacen envíos a todo el Perú?</p>
+            <img src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
+          </div>
+          <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit consectetur totam saepe id quae, voluptate, obcaecati temporibus alias unde dolore voluptatem aperiam placeat possimus! Labore est repudiandae sequi veniam aliquid?</p>
+        </div>
+        <div class="faq">
+          <div>
+            <p class="desktop-parrafo-grande">¿En cuantos días llega mi pedido?</p>
+            <img src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
+          </div>
+          <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit consectetur totam saepe id quae, voluptate, obcaecati temporibus alias unde dolore voluptatem aperiam placeat possimus! Labore est repudiandae sequi veniam aliquid?</p>
+        </div>
+        <div class="faq">
+          <div>
+            <p class="desktop-parrafo-grande">¿Cómo se manejan las devoluciones?</p>
+            <img src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
+          </div>
+          <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit consectetur totam saepe id quae, voluptate, obcaecati temporibus alias unde dolore voluptatem aperiam placeat possimus! Labore est repudiandae sequi veniam aliquid?</p>
+        </div>
+      </div>
     </div>
-    <label for=<?= $value ?>>
-      <?= $label ?>
-    </label>
-  </div>
   <?php
 }

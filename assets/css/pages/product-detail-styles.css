@@ -1,0 +1,124 @@
+/*--------------------------------------------------------------
+## Sección Hero del producto
+--------------------------------------------------------------*/
+.sec-hero-product {
+  padding-top: 160px;
+  padding-bottom: 160px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.izq-image {
+  width: 100%;
+}
+.izq-image img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.der-details {
+  background-color: var(--Fondo-Banner);
+  color: var(--Fondo);
+}
+
+.der-details .infocard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 36px 48px;
+  border-bottom: 1px solid var(--Bordes-Marcados, #AFAFAF);
+}
+
+.der-details .product-price bdi,
+.der-details .product-price bdi span {
+  color: var(--Bordes, #C7C7C7);
+  font-family: Fahkwang;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.der-details .infocard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  padding: 45px 48px;
+}
+
+.der-details .minicards {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+}
+.der-details .minicards .minicard {
+  display: flex;
+  width: 120px;
+  padding: 15px 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  
+  border-radius: 3px;
+  background-color: #353535;
+}
+.der-details .minicards .minicard > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* justify-content: center; */
+  align-items: center;
+}
+.der-details .minicards .minicard > div .minicard-label {
+  color: var(--Bordes, #C7C7C7);
+}
+.der-details .minicards .minicard > div .minicard-value {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.der-details .info-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-transform: uppercase;
+}
+.der-details .info-rows .row .desktop-parrafo-bold {
+  color: var(--Fondo);
+  display: inline-block;
+  width: 135px;
+  margin-right: 70px;
+}
+
+/*--------------------------------------------------------------
+## Sección Descripción del Producto
+--------------------------------------------------------------*/
+.sec-prod-desc {
+  width: 840px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 149px 0 155px 0;
+}
+.sec-prod-desc p {
+  text-align: center;
+}
+
+
+/*--------------------------------------------------------------
+## Sección Productos Relacionados
+--------------------------------------------------------------*/
+.sec-prod-relacionados {
+  display: flex;
+  gap: 89px;
+  flex-direction: column;
+  padding-top: 149px;
+}
+
+.related-products {
+  display: flex;
+  justify-content: space-between;
+}

@@ -87,6 +87,13 @@ hr {
   font-weight: 400;
   line-height: normal;
 }
+.desktop-parrafo-bold {
+  color: var(--Texto-Principal);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+}
 .desktop-span {
   color: var(--Text-Principal);
   font-family: 'DM Sans', sans-serif;
@@ -224,4 +231,65 @@ hr {
 }
 footer.wrap-grande {
   margin-top: 160px;
+}
+
+/*--------------------------------------------------------------
+## Sección de Trazabilidad (parte de ella esta en el .php)
+--------------------------------------------------------------*/
+.sec-trazabilidad {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 99px;
+}
+
+.sec-trazabilidad .cta {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+}
+
+.sec-trazabilidad .cta h2 {
+  width: 840px;
+  text-align: center;
+}
+
+
+/*--------------------------------------------------------------
+## Sección de preguntas frecuentes
+--------------------------------------------------------------*/
+.sec-faq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 89px;
+  width: 840px;
+  padding: 150px 0 160px 0;
+  /* override padding */
+}
+
+.sec-faq .faqs .faq>div {
+  display: flex;
+  padding: 25px 0px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sec-faq .faqs .faq>div img {
+  transition: transform 0.25s ease-in;
+}
+
+.sec-faq .faqs .faq>p {
+  height: 0px;
+  overflow-y: hidden;
+  transition: height 0.25s ease-in;
+  border-bottom: 1px solid var(--Bordes-Marcados);
+}
+
+/* Cuando esta activo */
+.sec-faq .faqs .faq.active>div img {
+  transform: rotate(180deg);
 }
