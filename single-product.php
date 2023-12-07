@@ -24,7 +24,9 @@
       }
     }
   ?>
-  <div class="wrap-grande ">
+
+  
+  <div class="wrap-grande">
     <div class="wrap-container sec-hero-product">
       <div class="izq-image">
         <img src="<?= wp_get_attachment_image_url($product->get_image_id(), 'large') ?>" alt="<?= $product->get_name() ?>">
@@ -120,18 +122,26 @@
             </div>
             <div class="row">
               <span class="desktop-parrafo-bold">CANTIDAD</span>
-              <div class="woocommerce-product-quantity">
-                <?php
-                  woocommerce_quantity_input(array(
-                    'min_value'   => apply_filters('woocommerce_quantity_input_min', 1, $product),
-                    'max_value'   => apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product),
-                    'input_value' => isset($_POST['quantity']) ? wc_stock_amount($_POST['quantity']) : 1, // phpcs:ignore WordPress.Security
-                  ));
-                ?>
+              <div class="product-quantity-box">
+                <div class="icon-menos">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.19922 9H16.7992" stroke="#4A4A4A" stroke-width="1.4"/>
+                  </svg>
+                </div>
+                <input
+                  type="number" name="cantidad-producto"
+                  id="cantidad-producto" class="desktop-parrafo"
+                  value="1"
+                />
+                <div class="icon-mas">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.99922 1.2002V16.8002M1.19922 9.0002H16.7992" stroke="#4A4A4A" stroke-width="1.4"/>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
-          <a href="" class="btn-primary" style="display: flex; justify-content: center;">
+          <a id="link-add-to-cart" href="<?php echo esc_html($product->add_to_cart_url()); ?>" class="btn-primary" style="display: flex; justify-content: center;">
             <span class="desktop-parrafo">
               Agregar al carrito
             </span>

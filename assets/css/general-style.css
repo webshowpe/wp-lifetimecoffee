@@ -171,6 +171,24 @@ hr {
   display: flex;
   gap: 35px;
 }
+.nav-desktop .nav-actions .action-cart {
+  position: relative;
+}
+.nav-desktop .nav-actions .action-cart .num-items {
+  /* Position */
+  position: absolute;
+  right: -6px;
+  top: -8px;
+  /* Layout */
+  display: flex;
+  width: 22px;
+  height: 22px;
+  justify-content: center;
+  align-items: center;
+  /* Style */
+  background-color: var(--Amarillo-Golden);
+  border-radius: 26px;
+}
 
 .nav-desktop .main-menu li {
   transition: all 1s ease-in-out;

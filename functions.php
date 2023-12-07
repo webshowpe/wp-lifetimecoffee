@@ -92,11 +92,16 @@ function lifetime_load_styles_and_scripts() {
 
   // Encolar en single-product.php
   if (is_singular( 'product' )) {
-    // Estilos de página
+    // Estilos y scripts de página
     wp_enqueue_style(
       'product-detail-style',
       get_template_directory_uri() . '/assets/css/pages/product-detail-styles.css',
       array($parent_style), $version, 'all'
+    );
+    wp_enqueue_script(
+      'product-detail-script',
+      get_template_directory_uri() . '/assets/js/pages/product-detail-scripts.js',
+      array(), $version, true
     );
     
     // Cargar componente product-card

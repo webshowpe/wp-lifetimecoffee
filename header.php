@@ -50,11 +50,12 @@
         ?>
 
         <div class="nav-actions">
-          <a href="">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/svg/30x30-carrito.svg">
-          </a>
-          <a href="">
+          <a href="" class="action-search">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/svg/30x30-lupa.svg">
+          </a>
+          <a href="cart/" class="action-cart">
+            <span class="desktop-span num-items"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/svg/30x30-carrito.svg">
           </a>
         </div>
       </div>
