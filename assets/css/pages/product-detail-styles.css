@@ -35,6 +35,7 @@
 .der-details {
   background-color: var(--Fondo-Banner);
   color: var(--Fondo);
+  min-width: 620px;
 }
 
 .der-details .infocard-header {

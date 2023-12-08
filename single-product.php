@@ -2,6 +2,8 @@
   <?php
     $product = wc_get_product(get_the_ID());
 
+    $coffee_category_id = 16;
+
     function obtener_atributo_producto($product, $atributo) {
       // Obtener todos los atributos de un determinado producto
       $product_attributes = $product->get_attributes();
@@ -41,6 +43,7 @@
           </span>
         </div>
         <div class="infocard-body">
+          <?php if(has_term($coffee_category_id, 'product_cat', $product->id)):?>
           <div class="minicards">
             <div class="minicard">
               <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,6 +104,7 @@
               </div>
             </div>
           </div>
+          <?php endif; ?>
           <div class="info-rows">
             <div class="row">
               <span class="desktop-parrafo-bold">ORIGEN</span>
@@ -108,12 +112,14 @@
                 <?php echo get_post_meta(get_the_ID(), '_product_origin', true); ?>
               </span>
             </div>
-            <div class="row">
-              <span class="desktop-parrafo-bold">PUNTOS DE TAZA</span>
-              <span class="prod-value">
-                <?php echo get_post_meta(get_the_ID(), '_product_cup_points', true); ?> TOTAL
-              </span>
-            </div>
+            <?php if(has_term($coffee_category_id, 'product_cat', $product->id)):?>
+              <div class="row">
+                <span class="desktop-parrafo-bold">PUNTOS DE TAZA</span>
+                <span class="prod-value">
+                  <?php echo get_post_meta(get_the_ID(), '_product_cup_points', true); ?> TOTAL
+                </span>
+              </div>
+            <?php endif; ?>
             <div class="row">
               <span class="desktop-parrafo-bold">PESO</span>
               <span class="prod-value">
@@ -161,9 +167,11 @@
       </p>
     </div>
     <hr />
-    <div class="wrap-container" style="padding-top: 160px;">
-      <?php banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png');  ?>
-    </div>
+    <?php if(has_term($coffee_category_id, 'product_cat', $product->id)):?>
+      <div class="wrap-container" style="padding-top: 160px;">
+        <?php banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png');  ?>
+      </div>
+    <?php endif; ?>
     <?php lifetime_faqs(); ?>
     <hr/>
     <div class="wrap-container sec-prod-relacionados">

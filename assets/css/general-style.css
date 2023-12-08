@@ -116,6 +116,7 @@ hr {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   transition: background-color 0.2s ease-in-out;
   text-transform: uppercase;
+  user-select: none;
 }
 .btn-primary:hover {
   background-color: var(--Amarillo-Hover);
