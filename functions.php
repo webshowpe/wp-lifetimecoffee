@@ -33,6 +33,12 @@ function lifetime_load_styles_and_scripts() {
     array(), $version, true
   );
 
+  // Agregar objeto ajax_object para el javascript general con la ruta de admin-ajax.html
+  wp_localize_script(
+    'general-script', 'ajax_object',
+    ['ajax_url' => admin_url("admin-ajax.php")]
+  );
+
   // Encolar en front_page.php
   if (is_front_page()) {
     // Estilos y script de página
@@ -45,7 +51,7 @@ function lifetime_load_styles_and_scripts() {
     wp_enqueue_script(
       'home-script',
       get_template_directory_uri() . '/assets/js/pages/home-scripts.js',
-      array(), $version, true
+      array('general-script'), $version, true
     );
 
     // Cargar componente product-card
@@ -79,7 +85,7 @@ function lifetime_load_styles_and_scripts() {
     wp_enqueue_script(
       'productcatscript',
       get_template_directory_uri() . '/assets/js/pages/product-cat-scripts.js',
-      array(), $version, true
+      array('general-script'), $version, true
     );
 
     // Cargar componente product-card
@@ -101,7 +107,7 @@ function lifetime_load_styles_and_scripts() {
     wp_enqueue_script(
       'product-detail-script',
       get_template_directory_uri() . '/assets/js/pages/product-detail-scripts.js',
-      array(), $version, true
+      array('general-script'), $version, true
     );
     
     // Cargar componente product-card
@@ -121,6 +127,15 @@ function lifetime_load_styles_and_scripts() {
       'acordeon',
       get_template_directory_uri() . '/assets/js/components/acordeon.js',
       array(), $version, true
+    );
+  }
+
+  // Encolar en el carrito de compras de woocommerce
+  if (is_cart()) {
+    wp_enqueue_script(
+      'cart-page-script',
+      get_template_directory_uri() . '/assets/js/pages/cart-page-scripts.js',
+      array('general-script'), $version, true
     );
   }
 }
@@ -186,3 +201,33 @@ function lifetime_save_customfields_wooproduct($post_id) {
 }
 
 add_action('woocommerce_process_product_meta', 'lifetime_save_customfields_wooproduct');
+
+
+/*--------------------------------------------------------------
+## Registrar el AJAX que se encarga de agregar un producto al carrito
+--------------------------------------------------------------*/
+function lifetime_add_product_to_cart() {
+  $product_id = $_POST["product_id"];
+  $quantity = $_POST["quantity"];
+
+  WC()->cart->add_to_cart($product_id, $quantity);
+
+  // Devolver el nuevo conteo de elementos del carrito
+  echo WC()->cart->get_cart_contents_count();
+
+  wp_die();
+}
+
+add_action('wp_ajax_add_product_to_cart', 'lifetime_add_product_to_cart');
+add_action('wp_ajax_nopriv_add_product_to_cart', 'lifetime_add_product_to_cart');
+
+/*--------------------------------------------------------------
+## Registrar el AJAX que se encarga de actualizar el conteo de elementos del carrito
+--------------------------------------------------------------*/
+function lifetime_update_count_cart() {
+  echo WC()->cart->get_cart_contents_count();
+  wp_die();
+}
+
+add_action('wp_ajax_update_count_cart', 'lifetime_update_count_cart');
+add_action('wp_ajax_nopriv_update_count_cart', 'lifetime_update_count_cart');

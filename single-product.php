@@ -141,7 +141,11 @@
               </div>
             </div>
           </div>
-          <a id="link-add-to-cart" href="<?php echo esc_html($product->add_to_cart_url()); ?>" class="btn-primary" style="display: flex; justify-content: center;">
+          <a
+            id="link-add-to-cart" href="" class="btn-primary"
+            style="display: flex; justify-content: center;"
+            product-id="<?= $product->id ?>"
+          >
             <span class="desktop-parrafo">
               Agregar al carrito
             </span>
