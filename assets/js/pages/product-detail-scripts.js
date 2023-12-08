@@ -13,9 +13,43 @@ iconMas.addEventListener("click", () => {
     inputField.value++;
 });
 iconMenos.addEventListener("click", () => {
-    inputField.value--;
+    if (inputField.value > 1) {
+        inputField.value--;
+    }
 });
 
+/*--------------------------------------------------------------
+## Sección: Hero del producto
+## Funcionalidad: Evitar que se digiten numeros menores al 1, decimales y 1
+   simbolo "e" en el campo de cantidad.
+--------------------------------------------------------------*/
+
+var numbersAndDeletes = [
+    // Teclas numericas de arriba 0-9
+    48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
+    // Teclas numericas de la derecha 0-9
+    96, 97, 98, 99, 100, 101, 102, 103, 104, 105,
+    // Teclas de izq, der, abajo, arriba
+    37, 38, 39, 40,
+    // Teclas de borrar y supr
+    8, 46,
+];
+
+inputField.addEventListener("keydown", (e) => {
+    // Obtiene el código de la tecla presionada
+    var keyCode = e.which || e.keyCode;
+    
+    // Verifica si la tecla presionada es permitida
+    if (!numbersAndDeletes.includes(keyCode)) {
+        e.preventDefault();
+    }
+});
+
+inputField.addEventListener("keyup", (e) => {
+    if (inputField.value == 0) {
+        inputField.value = 1;
+    }
+});
 
 /*--------------------------------------------------------------
 ## Sección: Hero del producto

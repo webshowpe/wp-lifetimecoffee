@@ -109,21 +109,30 @@
             <div class="row">
               <span class="desktop-parrafo-bold">ORIGEN</span>
               <span class="prod-value">
-                <?php echo get_post_meta(get_the_ID(), '_product_origin', true); ?>
+                <?php
+                  $origen_producto = get_post_meta(get_the_ID(), '_product_origin', true);
+                  echo ($origen_producto == "") ? "---" : $origen_producto;
+                ?>
               </span>
             </div>
             <?php if(has_term($coffee_category_id, 'product_cat', $product->id)):?>
               <div class="row">
                 <span class="desktop-parrafo-bold">PUNTOS DE TAZA</span>
                 <span class="prod-value">
-                  <?php echo get_post_meta(get_the_ID(), '_product_cup_points', true); ?> TOTAL
+                  <?php 
+                    $puntos_taza = get_post_meta(get_the_ID(), '_product_cup_points', true);
+                    echo ($puntos_taza == "") ? "---" : $puntos_taza . " TOTAL"; 
+                  ?>
                 </span>
               </div>
             <?php endif; ?>
             <div class="row">
               <span class="desktop-parrafo-bold">PESO</span>
               <span class="prod-value">
-                500g
+                <?php
+                  $peso_producto = $product->get_weight();
+                  echo ($peso_producto == "") ? "---" : $peso_producto . " " . get_option("woocommerce_weight_unit");
+                ?>
               </span>
             </div>
             <div class="row">
@@ -137,7 +146,7 @@
                 <input
                   type="number" name="cantidad-producto"
                   id="cantidad-producto" class="desktop-parrafo"
-                  value="1"
+                  min="1" value="1"
                 />
                 <div class="icon-mas">
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
