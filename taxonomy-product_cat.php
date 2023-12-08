@@ -79,34 +79,41 @@
       <?php else: ?>
         <span>No hay taxonomías de atributos disponibles.</span>
       <?php endif; ?>
-      
     </aside>
-    <section class="product-list">
-      <?php
-        if (!function_exists('wc_get_products')) return;
+    <section class="product-section">
+    <?php if (have_posts()) : ?>
+      <div class="product-list">
+        <?php 
+          while (have_posts()) {
+            the_post();
+            $product = wc_get_product();
 
-        $args = array(
-          'status' => 'publish',
-          'category' => get_queried_object()->slug,
-          'limit'  => 10,
-          'order_by' => 'date',
-          'order' => 'DESC',
-        );
+            $urlimage_product = wp_get_attachment_url($product->get_image_id());
 
-        $products = wc_get_products($args);
+            tarjeta_producto(
+                title: $product->get_name(),
+                url_image: $urlimage_product,
+                url: $product->get_permalink(),
+                price: $product->get_regular_price()
+            );
+          }
+          ?>
+      </div>
+      <div class="product-pagination">
+        <?php 
+          $links = paginate_links( array("type" => "array") );
 
-        foreach ($products as $product) {
-          $urlimage_product = wp_get_attachment_url($product->get_image_id());
-
-          tarjeta_producto(
-            title:      $product->get_name(),
-            url_image:  $urlimage_product,
-            url:        $product->get_permalink(),
-            price:      $product->get_regular_price()
-          );
-        }
-      ?>
-    </section>
+          if (isset($links)) :
+            foreach($links as $link ):
+              echo $link;
+            endforeach; 
+          endif;
+        ?>
+      </div>
+    <?php else: ?>
+        <span>No hay productos en esta categoría.</span>
+    <?php endif; ?>
+  </section>
   </div>
 </div>
 

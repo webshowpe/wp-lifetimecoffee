@@ -94,13 +94,41 @@
 /*--------------------------------------------------------------
 ## Sección de lista de productos
 --------------------------------------------------------------*/
-
-.sec-body .product-list {
-  /* Quiero que esta seccion tome el ancho restante y GPT medio */
-  flex-grow: 1;
-  flex-basis: 0;
-
+.sec-body .product-section {
+  width: 950px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+.sec-body .product-section .product-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  /* justify-content: space-between; */
+  column-gap: 40px;
+  row-gap: 45px;
+}
+/*--------------------------------------------------------------
+## Sección de páginación
+--------------------------------------------------------------*/
+.sec-body .product-section .product-pagination {
+  display: flex;
+  gap: 10px;
+}
+.sec-body .product-section .product-pagination .page-numbers {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50px;
+  border: 2px solid var(--Bordes, #C7C7C7);
+}
+.sec-body .product-section .product-pagination a.page-numbers:hover {
+  background-color: var(--Bordes);
+}
+.sec-body .product-section .product-pagination .page-numbers.current {
+  border-radius: 50px;
+  background: var(--Amarillo-Golden, #F2D66E);
+  border: none;
 }

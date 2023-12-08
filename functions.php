@@ -231,3 +231,20 @@ function lifetime_update_count_cart() {
 
 add_action('wp_ajax_update_count_cart', 'lifetime_update_count_cart');
 add_action('wp_ajax_nopriv_update_count_cart', 'lifetime_update_count_cart');
+
+
+/*--------------------------------------------------------------
+Configurar paginación en las categorías de productos
+Mas información: https://wordpress.stackexchange.com/a/298775
+--------------------------------------------------------------*/
+function custom_product_cat_query($query) {
+  // if (is_tax('product_cat') && is_main_query()) { // Este oculta la navegacion
+  //     $query->set('post_type', 'product');
+  //     $query->set('posts_per_page', 6);
+  // }
+  if (!is_admin() && $query->is_tax("product_cat")){
+    $query->set('posts_per_page', 6);
+  }
+}
+
+add_action('pre_get_posts', 'custom_product_cat_query');
