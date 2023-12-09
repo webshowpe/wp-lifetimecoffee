@@ -81,73 +81,38 @@
       <?php endif; ?>
     </aside>
     <section class="product-section">
-    <?php 
-    // Obtener el término actual
-    $term = get_queried_object();
-
-    // Configurar los argumentos para la consulta de productos
-    $args = array(
-        'post_type'      => 'product',
-        'posts_per_page' => 6,
-        'paged'          => max(1, get_query_var('paged')),
-        'tax_query'      => array(
-            array(
-                'taxonomy' => 'product_cat',
-                'field'    => 'id',
-                'terms'    => $term->term_id,
-            ),
-        ),
-    );
-
-
-    // Verificar si hay un atributo para filtrar
-    if (isset($_GET['attribute'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'pa_atributo', // Reemplaza 'pa_atributo' con el nombre de tu atributo
-            'field'    => 'slug',
-            'terms'    => sanitize_text_field($_GET['attribute']),
-        );
-    }
-
-    // Realizar la consulta de productos
-    $products_query = new WP_Query($args);
-
-    // var_dump($products_query);
-
-    if ($products_query->have_posts()) :
-    ?>
-    <div class="product-list">
+    <?php if (have_posts()) : ?>
+      <div class="product-list">
         <?php 
-        while ($products_query->have_posts()) {
-            $products_query->the_post();
+          while (have_posts()) {
+            the_post();
             $product = wc_get_product();
+            $urlimage_product = wp_get_attachment_url($product->get_image_id());
 
             tarjeta_producto(
-                title: $product->get_name(),
-                url_image: wp_get_attachment_url($product->get_image_id()),
-                url: $product->get_permalink(),
-                price: $product->get_regular_price()
+              title: $product->get_name(),
+              url_image: $urlimage_product,
+              url: $product->get_permalink(),
+              price: $product->get_regular_price()
             );
-        }
+          }
         ?>
-    </div>
-    <?php else : ?>
-    <span>No hay productos en esta categoría.</span>
-    <?php endif; ?>
-
-    <div class="product-pagination">
+      </div>
+      <div class="product-pagination">
         <?php 
-        // Mostrar la paginación
-        echo paginate_links(array(
-            'total'    => $products_query->max_num_pages,
-            'current'  => max(1, get_query_var('paged')),
-            'format'   => '?paged=%#%',
-            
-        ));
-        wp_reset_postdata(); // Restablecer los datos del post para evitar conflictos
+          $links = paginate_links( array("type" => "array") );
+
+          if (isset($links)) :
+            foreach($links as $link ):
+              echo $link;
+            endforeach; 
+          endif;
         ?>
-    </div>
-</section>
+      </div>
+    <?php else: ?>
+      <span>No hay productos en esta categoría.</span>
+    <?php endif; ?>
+  </section>
   </div>
 </div>
 

@@ -34,36 +34,39 @@ categorias.forEach((category) => {
 });
 
 /*--------------------------------------------------------------
-## Sección: Páginación
+## Sección: Paginación
 ## Funcionalidad: Cambiar texto de Next y Prev por iconos "<" ">"
 --------------------------------------------------------------*/
-const $nextLink = document.querySelector("a.next");
-const $prevLink = document.querySelector("a.prev");
-
-if ($nextLink !== null) {
-    $nextLink.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path id="Vector" d="M13.969 9L5.96897 17L5 16.031L12.031 9L5 1.96897L5.96897 1L13.969 9Z" fill="#4A4A4A"/>
-        </svg>
-    `;
+function asignarIconosNextPrev() {
+    const $nextLink = document.querySelector("a.next");
+    const $prevLink = document.querySelector("a.prev");
+    if ($nextLink !== null) {
+        $nextLink.innerHTML = `
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Vector" d="M13.969 9L5.96897 17L5 16.031L12.031 9L5 1.96897L5.96897 1L13.969 9Z" fill="#4A4A4A"/>
+            </svg>
+        `;
+    }
+    if ($prevLink !== null) {
+        $prevLink.innerHTML = `
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Vector" d="M4.03103 9L12.031 1L13 1.96897L5.96897 9L13 16.031L12.031 17L4.03103 9Z" fill="#4A4A4A"/>
+            </svg>
+        `;
+    }
 }
-if ($prevLink !== null) {
-    $prevLink.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path id="Vector" d="M4.03103 9L12.031 1L13 1.96897L5.96897 9L13 16.031L12.031 17L4.03103 9Z" fill="#4A4A4A"/>
-        </svg>
-    `;
-}
+asignarIconosNextPrev();
 
 /*--------------------------------------------------------------
-## Sección: TEST
-## Funcionalidad: Obtener productos de acuerdo a filtros con AJAX
+## Sección: Productos y Paginación
+## Funcionalidad: Mediante ajax enviar filtros y solicitar una nueva
+   product_list y pagination
 --------------------------------------------------------------*/
 let currentPage = 1;
 
 jQuery(document).ready(function($) {
     // Manejar el cambio de checkboxes de atributos mediante AJAX
-    $('.filter-molienda input[type="checkbox"]').change(function() {
+    $('input[type="checkbox"]').change(function() {
         currentPage = 1;
         filterProducts();
     });
@@ -71,17 +74,26 @@ jQuery(document).ready(function($) {
     // Manejar el cambio de página mediante AJAX
     $('.product-pagination').on('click', '.page-numbers', function(e) {
         e.preventDefault();
-        currentPage = parseInt($(this).text());
+        
+        if ($(this).hasClass('next')) {
+            currentPage ++;
+        } else if($(this).hasClass('prev')) {
+            currentPage --;
+        } else {
+            currentPage = parseInt($(this).text());
+        }
         filterProducts();
     });
 
     // Realizar funcion AJAX
     function filterProducts() {
+        let arrayFilters = []; // Guardar los checkbox marcados "filtros".
 
-        let selectedAttributes = [];
-
-        $('.filter-molienda input[type="checkbox"]:checked').each(function() {
-            selectedAttributes.push($(this).val());
+        $('input[type="checkbox"]:checked').each(function () {
+            arrayFilters.push({
+                taxonomy: $(this).attr("name"),
+                term: $(this).val(),
+            });
         });
 
         $.ajax({
@@ -90,15 +102,16 @@ jQuery(document).ready(function($) {
             data: {
                 action: 'filter_products',
                 slug_category: categoriaActualSlug,
-                attributes: selectedAttributes,
+                array_filters: arrayFilters,
                 page: currentPage,
             },
             success: function(response) {
                 // Actualizar la lista de productos y la paginación con la respuesta AJAX
                 $('.product-list').html(response.data.products);
                 $('.product-pagination').html(response.data.pagination);
+            
+                asignarIconosNextPrev();
             },
         });
     }
-
 });

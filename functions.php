@@ -234,16 +234,12 @@ add_action('wp_ajax_nopriv_update_count_cart', 'lifetime_update_count_cart');
 
 
 /*--------------------------------------------------------------
-Configurar paginación en las categorías de productos
+Configurar paginación en las categorías de productos (WP_Query principal)
 Mas información: https://wordpress.stackexchange.com/a/298775
 --------------------------------------------------------------*/
 function custom_product_cat_query($query) {
-  // if (is_tax('product_cat') && is_main_query()) { // Este oculta la navegacion
-  //     $query->set('post_type', 'product');
-  //     $query->set('posts_per_page', 6);
-  // }
   if (!is_admin() && $query->is_tax("product_cat")){
-    $query->set('posts_per_page', 3);
+    $query->set('posts_per_page', 9);
   }
 }
 
@@ -254,40 +250,90 @@ add_action('pre_get_posts', 'custom_product_cat_query');
 // Funcion para manejar solicitudes AJAX con paginación
 
 function filter_products_by_attributes() {
-  // Traemos el slug de la categoria actual
+  // Slug de la categoria actual
   $slug_category = $_POST['slug_category'];
-  // Traemos el attributes
-  $attributes = isset($_POST['attributes']) ? array_map('sanitize_text_field', $_POST['attributes']) : array();
-  // Traemos la página actual en la paginacion
+  // Traemos el objeto de terms junto con su tipo de taxonomia
+  $array_filters = isset($_POST['array_filters']) ? $_POST['array_filters'] : array();
+  // Página actual en la paginacion
   $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 
   // Configuramos los argumentos para la consulta de productos
   $args = array(
     'post_type' => 'product',
-    'posts_per_page' => 3,
+    'posts_per_page' => 9, // Igual que en custom_product_cat_query() sino problema en paginacion.
     'paged' => $page,
     'tax_query' => array(
       array(
         'taxonomy' => 'product_cat',
         'field' => 'slug',
-        'terms' => $slug_category //$term_id
+        'terms' => $slug_category
       ),
     ),
   );
 
-  if (!empty($attributes)) {
+  if (!empty($array_filters)) {
     $tax_query = array('relation' => 'AND');
 
-    foreach ($attributes as $attribute) {
+    $terms_pa_molienda = array();
+    $terms_pa_proceso = array();
+    $terms_pa_tostado = array();
+
+    foreach ($array_filters as $filter) {
+      if ($filter["taxonomy"] == "pa_molienda") {
+        array_push($terms_pa_molienda, $filter["term"]);
+      } else if ($filter["taxonomy"] == "pa_proceso") {
+        array_push($terms_pa_proceso, $filter["term"]);
+      } else if ($filter["taxonomy"] == "pa_tostado") {
+        array_push($terms_pa_tostado, $filter["term"]);
+      }
+    }
+
+    if (!empty($terms_pa_molienda)) {
       $tax_query[] = array(
-        'taxonomy' => 'pa_molienda', // <<<----------------- CAMBIAR AQUI CATEGORIAS
+        'taxonomy' => "pa_molienda",
         'field' => 'slug',
-        'terms' => $attribute,
+        'terms' => $terms_pa_molienda,
+      );
+    }
+    if (!empty($terms_pa_proceso)) {
+      $tax_query[] = array(
+        'taxonomy' => "pa_proceso",
+        'field' => 'slug',
+        'terms' => $terms_pa_proceso,
+      );
+    }
+    if (!empty($terms_pa_tostado)) {
+      $tax_query[] = array(
+        'taxonomy' => "pa_tostado",
+        'field' => 'slug',
+        'terms' => $terms_pa_tostado,
       );
     }
 
     $args['tax_query'][] = $tax_query;
   }
+
+  // EJEMPLO DE SALIDA DEL TAX_QUERY
+  // array(2) {
+  //   [0]=> array(3) {
+  //     ["taxonomy"]=> string(11) "product_cat"
+  //     ["field"]=> string(4) "slug"
+  //     ["terms"]=> string(5) "cafes"
+  //   }
+  //   [1]=> array(3) {
+  //     ["relation"]=> string(3) "AND"                    <- AND
+  //     [0]=> array(3) {
+  //       ["taxonomy"]=> string(11) "pa_molienda"
+  //       ["field"]=> string(4) "slug"
+  //       ["terms"]=> array('fino', 'medio')              <- OR
+  //     }
+  //     [2]=> array(3) {
+  //       ["taxonomy"]=> string(11) "pa_proceso"
+  //       ["field"]=> string(4) "slug"
+  //       ["terms"]=> array('honey', 'lavado', 'natural') <- OR
+  //     }
+  //   }
+  // }
 
   // Realizar la consulta de productos
   $products_query = new WP_Query($args);
