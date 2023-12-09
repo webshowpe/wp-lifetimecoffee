@@ -23,12 +23,12 @@ checkboxes.forEach((checkbox) => {
 
 let urlActual = window.location.href;
 let segmentos = urlActual.split("/");
-let categoriaActual = segmentos[segmentos.length - 2];
+let categoriaActualSlug = segmentos[segmentos.length - 2];
 
 let categorias = document.querySelectorAll("a.category");
 
 categorias.forEach((category) => {
-    if (category.id === categoriaActual) {
+    if (category.id === categoriaActualSlug) {
         category.classList.add("selected");
     }
 });
@@ -54,3 +54,51 @@ if ($prevLink !== null) {
         </svg>
     `;
 }
+
+/*--------------------------------------------------------------
+## Sección: TEST
+## Funcionalidad: Obtener productos de acuerdo a filtros con AJAX
+--------------------------------------------------------------*/
+let currentPage = 1;
+
+jQuery(document).ready(function($) {
+    // Manejar el cambio de checkboxes de atributos mediante AJAX
+    $('.filter-molienda input[type="checkbox"]').change(function() {
+        currentPage = 1;
+        filterProducts();
+    });
+
+    // Manejar el cambio de página mediante AJAX
+    $('.product-pagination').on('click', '.page-numbers', function(e) {
+        e.preventDefault();
+        currentPage = parseInt($(this).text());
+        filterProducts();
+    });
+
+    // Realizar funcion AJAX
+    function filterProducts() {
+
+        let selectedAttributes = [];
+
+        $('.filter-molienda input[type="checkbox"]:checked').each(function() {
+            selectedAttributes.push($(this).val());
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: ajax_object.ajax_url,
+            data: {
+                action: 'filter_products',
+                slug_category: categoriaActualSlug,
+                attributes: selectedAttributes,
+                page: currentPage,
+            },
+            success: function(response) {
+                // Actualizar la lista de productos y la paginación con la respuesta AJAX
+                $('.product-list').html(response.data.products);
+                $('.product-pagination').html(response.data.pagination);
+            },
+        });
+    }
+
+});

@@ -42,7 +42,7 @@
       if ($atributos_productos): ?>
       
       <?php foreach ($atributos_productos as $atributo): ?>
-          <div>
+          <div class="filter-<?= $atributo->attribute_name; ?>">
             <h4 class="desktop-parrafo" style="font-weight: 700; text-transform: uppercase;">
               <?= $atributo->attribute_label; ?>
             </h4>
@@ -60,7 +60,7 @@
 
                   <div style="display: flex; align-items: center; gap: 15px;">
                     <div class="custom-check">
-                      <input type="checkbox" id=<?= $term->slug ?> name=<?= $term->taxonomy ?> value=<?= $term->slug ?>>
+                      <input type="checkbox" id=<?= $term->slug ?> data-term-id=<?= $term->term_id; ?> name=<?= $term->taxonomy ?> value=<?= $term->slug ?>>
                       <svg class="icon-check" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M17.01 2.50879L5.99625 13.5113L0.99 8.50504L0 9.49504L5.99625 15.5025L18 3.49879L17.01 2.50879Z" fill="#4A4A4A"/>
                       </svg>
@@ -81,39 +81,73 @@
       <?php endif; ?>
     </aside>
     <section class="product-section">
-    <?php if (have_posts()) : ?>
-      <div class="product-list">
-        <?php 
-          while (have_posts()) {
-            the_post();
-            $product = wc_get_product();
+    <?php 
+    // Obtener el término actual
+    $term = get_queried_object();
 
-            $urlimage_product = wp_get_attachment_url($product->get_image_id());
+    // Configurar los argumentos para la consulta de productos
+    $args = array(
+        'post_type'      => 'product',
+        'posts_per_page' => 6,
+        'paged'          => max(1, get_query_var('paged')),
+        'tax_query'      => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'id',
+                'terms'    => $term->term_id,
+            ),
+        ),
+    );
+
+
+    // Verificar si hay un atributo para filtrar
+    if (isset($_GET['attribute'])) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'pa_atributo', // Reemplaza 'pa_atributo' con el nombre de tu atributo
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($_GET['attribute']),
+        );
+    }
+
+    // Realizar la consulta de productos
+    $products_query = new WP_Query($args);
+
+    // var_dump($products_query);
+
+    if ($products_query->have_posts()) :
+    ?>
+    <div class="product-list">
+        <?php 
+        while ($products_query->have_posts()) {
+            $products_query->the_post();
+            $product = wc_get_product();
 
             tarjeta_producto(
                 title: $product->get_name(),
-                url_image: $urlimage_product,
+                url_image: wp_get_attachment_url($product->get_image_id()),
                 url: $product->get_permalink(),
                 price: $product->get_regular_price()
             );
-          }
-          ?>
-      </div>
-      <div class="product-pagination">
-        <?php 
-          $links = paginate_links( array("type" => "array") );
-
-          if (isset($links)) :
-            foreach($links as $link ):
-              echo $link;
-            endforeach; 
-          endif;
+        }
         ?>
-      </div>
-    <?php else: ?>
-        <span>No hay productos en esta categoría.</span>
+    </div>
+    <?php else : ?>
+    <span>No hay productos en esta categoría.</span>
     <?php endif; ?>
-  </section>
+
+    <div class="product-pagination">
+        <?php 
+        // Mostrar la paginación
+        echo paginate_links(array(
+            'total'    => $products_query->max_num_pages,
+            'current'  => max(1, get_query_var('paged')),
+            'format'   => '?paged=%#%',
+            
+        ));
+        wp_reset_postdata(); // Restablecer los datos del post para evitar conflictos
+        ?>
+    </div>
+</section>
   </div>
 </div>
 

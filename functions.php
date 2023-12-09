@@ -243,8 +243,92 @@ function custom_product_cat_query($query) {
   //     $query->set('posts_per_page', 6);
   // }
   if (!is_admin() && $query->is_tax("product_cat")){
-    $query->set('posts_per_page', 6);
+    $query->set('posts_per_page', 3);
   }
 }
 
 add_action('pre_get_posts', 'custom_product_cat_query');
+
+
+
+// Funcion para manejar solicitudes AJAX con paginación
+
+function filter_products_by_attributes() {
+  // Traemos el slug de la categoria actual
+  $slug_category = $_POST['slug_category'];
+  // Traemos el attributes
+  $attributes = isset($_POST['attributes']) ? array_map('sanitize_text_field', $_POST['attributes']) : array();
+  // Traemos la página actual en la paginacion
+  $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+
+  // Configuramos los argumentos para la consulta de productos
+  $args = array(
+    'post_type' => 'product',
+    'posts_per_page' => 3,
+    'paged' => $page,
+    'tax_query' => array(
+      array(
+        'taxonomy' => 'product_cat',
+        'field' => 'slug',
+        'terms' => $slug_category //$term_id
+      ),
+    ),
+  );
+
+  if (!empty($attributes)) {
+    $tax_query = array('relation' => 'AND');
+
+    foreach ($attributes as $attribute) {
+      $tax_query[] = array(
+        'taxonomy' => 'pa_molienda', // <<<----------------- CAMBIAR AQUI CATEGORIAS
+        'field' => 'slug',
+        'terms' => $attribute,
+      );
+    }
+
+    $args['tax_query'][] = $tax_query;
+  }
+
+  // Realizar la consulta de productos
+  $products_query = new WP_Query($args);
+
+  // Iniciar el almacenamiento de búfer de salida
+  ob_start();
+
+  // Verificar si hay productos en la consulta
+  if ($products_query->have_posts()) {
+    // Iterar sobre los productos y mostrar la tarjeta de producto
+    while($products_query->have_posts()) {
+      $products_query->the_post();
+      $product = wc_get_product();
+
+      tarjeta_producto(
+        title: $product->get_name(),
+        url_image: wp_get_attachment_url($product->get_image_id()),
+        url: $product->get_permalink(),
+        price: $product->get_regular_price()
+      );
+    }
+  } else {
+    // Mostrar un mensaje si no hay productos
+    echo '<span>No hay productos en esta categoría.</span>' . var_dump($args['tax_query']);
+  }
+
+  // Obtener el contenido del búfer y limpiar el búfer
+  $output = ob_get_clean();
+
+  // Obtener paginación
+  $pagination = paginate_links(array(
+    'total' => $products_query->max_num_pages,
+    'current' => $page,
+    'format' => '?page=%#%',
+  ));
+
+  // Enviar una respuesta JSON con los productos y la paginación
+  wp_send_json_success(
+    array('products' => $output, 'pagination' => $pagination)
+  );
+}
+
+add_action('wp_ajax_filter_products', 'filter_products_by_attributes');
+add_action('wp_ajax_nopriv_filter_products', 'filter_products_by_attributes');
