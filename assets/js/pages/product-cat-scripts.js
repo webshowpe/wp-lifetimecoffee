@@ -6,7 +6,6 @@ const checkboxes = document.querySelectorAll("input[type=checkbox]");
 
 
 checkboxes.forEach((checkbox) => {
-
     checkbox.addEventListener("change", function() {
         if (checkbox.checked) {
             checkbox.parentNode.classList.add("checked");
@@ -87,7 +86,7 @@ jQuery(document).ready(function($) {
 
     // Realizar funcion AJAX
     function filterProducts() {
-        let arrayFilters = []; // Guardar los checkbox marcados "filtros".
+        let arrayFilters = []; // Guardar los checkbox marcados: filtros.
 
         $('input[type="checkbox"]:checked').each(function () {
             arrayFilters.push({
@@ -96,6 +95,22 @@ jQuery(document).ready(function($) {
             });
         });
 
+        // Agregar loader en cada llamada AJAX
+        $('.product-list').html(`
+            <div style="position: sticky; top: 20px; display: flex; justify-content: center;align-items: center; height: 50vh; width: 100%; max-width:950px;">
+                <svg class="loader" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 5.625C16.54 5.625 5.625 16.54 5.625 30C5.625 43.46 16.54 54.375 30 54.375V48.2825C26.3848 48.282 22.8509 47.2095 19.8451 45.2007C16.8394 43.1919 14.4968 40.3369 13.1135 36.9968C11.7302 33.6567 11.3684 29.9814 12.0739 26.4356C12.7793 22.8899 14.5202 19.6329 17.0766 17.0766C19.6329 14.5202 22.8899 12.7793 26.4356 12.0739C29.9814 11.3684 33.6567 11.7302 36.9968 13.1135C40.3369 14.4968 43.1919 16.8394 45.2007 19.8451C47.2095 22.8509 48.282 26.3848 48.2825 30H54.375C54.375 16.54 43.46 5.625 30 5.625Z" fill="black" fill-opacity="0.9"/>
+                </svg>
+            </div>
+        `);
+        $(".product-pagination").html("");
+
+        // Desplazar hacia arriba con animación
+        var posicionTopProductList = $('.product-list').offset().top;
+        var heightNavegacion = $('.nav-desktop').height();
+        $('html, body').animate({ scrollTop: posicionTopProductList - heightNavegacion }, 'slow');
+
+        // Solicitud AJAX
         $.ajax({
             type: 'POST',
             url: ajax_object.ajax_url,

@@ -357,7 +357,7 @@ function filter_products_by_attributes() {
     }
   } else {
     // Mostrar un mensaje si no hay productos
-    echo '<span>No hay productos en esta categoría.</span>' . var_dump($args['tax_query']);
+    echo '<span>No hay productos en esta categoría.</span>';
   }
 
   // Obtener el contenido del búfer y limpiar el búfer
