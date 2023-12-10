@@ -16,7 +16,7 @@ function btn_primary($text, $link) {
 }
 
 // Banner de fondo yute
-function banner_oscuro($title, $imagename) {
+function banner_oscuro($title, $imagename, $link) {
   $text = esc_html($title);
   $imagename = esc_html($imagename);
 
@@ -24,7 +24,7 @@ function banner_oscuro($title, $imagename) {
     <div class="sec-trazabilidad">
       <div class="cta">
         <h2 class="desktop-h1" style="color: var(--Fondo)"><?= $title ?></h2>
-        <?php btn_primary("SABER MÁS", "https://diegoamorin.com") ?>
+        <?php btn_primary("SABER MÁS", $link) ?>
       </div>
       <img
         src="<?php echo get_template_directory_uri(); ?>/assets/imgs/<?= $imagename ?>"

@@ -178,7 +178,10 @@
     <hr />
     <?php if(has_term($coffee_category_id, 'product_cat', $product->id)):?>
       <div class="wrap-container" style="padding-top: 160px;">
-        <?php banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png');  ?>
+        <?php
+          $link_trazabilidad = esc_url(get_permalink(18));
+          banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png', $link_trazabilidad);
+        ?>
       </div>
     <?php endif; ?>
     <?php lifetime_faqs(); ?>

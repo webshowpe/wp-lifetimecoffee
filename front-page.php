@@ -2,7 +2,10 @@
   <div class="wrap-grande sec-hero">
     <div class="wrap-container">
       <h1 class="desktop-h1 txt-hero">Café de calidad para toda la vida</h1>
-      <?php btn_primary('COMPRAR CAFÉ', 'https://diegoamorin.com'); ?>
+      <?php
+        $link_cafes_category = esc_url(get_term_link('cafes', 'product_cat'));
+        btn_primary('COMPRAR CAFÉ', $link_cafes_category);
+      ?>
     </div>
   </div>
 
@@ -68,7 +71,10 @@
       <?php endif; ?>
     </div>
     <div class="wrap-container">
-      <?php banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png');  ?>
+      <?php
+        $link = esc_url(get_permalink(18));
+        banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png', $link); 
+      ?>
     </div>
     <div class="wrap-container sec-prod-dest">
       <img class="deco-cafe-3" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe3.png" alt="">
@@ -160,7 +166,10 @@
   <div class="wrap-grande">
     <?php lifetime_faqs(); ?>
     <div class="wrap-container">
-      <?php banner_oscuro('ENCUENTRA EL CAFÉ QUE MÁS TE GUSTE', 'productos-cafe-cta.png');  ?>
+      <?php
+        $link_cafes_category = esc_url(get_term_link('cafes', 'product_cat'));
+        banner_oscuro('ENCUENTRA EL CAFÉ QUE MÁS TE GUSTE', 'productos-cafe-cta.png', $link_cafes_category);
+      ?>
     </div>
   </div>
 <?php get_footer(); ?>
