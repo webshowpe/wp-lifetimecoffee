@@ -21,14 +21,14 @@ function banner_oscuro($title, $imagename, $link) {
   $imagename = esc_html($imagename);
 
   ?>
-    <div class="sec-trazabilidad">
+    <div class="sec-banner-oscuro">
       <div class="cta">
         <h2 class="desktop-h1" style="color: var(--Fondo)"><?= $title ?></h2>
         <?php btn_primary("SABER MÁS", $link) ?>
       </div>
       <img
         src="<?php echo get_template_directory_uri(); ?>/assets/imgs/<?= $imagename ?>"
-        alt="" width="970px" />
+        alt="" />
     </div>
   <?php
 }

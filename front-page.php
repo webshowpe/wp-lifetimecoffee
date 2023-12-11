@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <img class="deco-cafe" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe1.png" width="526px" height="auto" />
+    <img class="deco deco-cafe" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe1.png" width="526px" height="auto" />
   </div>
 
   <hr/>
@@ -70,14 +70,14 @@
         </div>
       <?php endif; ?>
     </div>
-    <div class="wrap-container">
+    <div class="wrap-container sec-trazabilidad-wrapper">
       <?php
         $link = esc_url(get_permalink(18));
         banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png', $link); 
       ?>
     </div>
     <div class="wrap-container sec-prod-dest">
-      <img class="deco-cafe-3" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe3.png" alt="">
+      <img class="deco deco-cafe-3" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe3.png" alt="">
       <h2 class="desktop-h2">LOS PRODUCTOS DESTACADOS</h2>
       <div class="cards-products">
         <?php
@@ -126,7 +126,7 @@
     </div>
   </div>
 
-  <hr/>
+  <hr class="divider-prod-desc-reviews" />
 
   <div class="wrap-grande">
     <div class="wrap-container sec-reviews">
@@ -157,15 +157,17 @@
     <img
       src="<?php echo get_template_directory_uri() . "/assets/imgs/deco-cafe4.png"?>"
       width="526px"
-      class="deco-cafe4"
+      class="deco deco-cafe4"
     />
   </div>
 
-  <hr/>
+  <hr class="divider-reviews-cta"/>
 
   <div class="wrap-grande">
-    <?php lifetime_faqs(); ?>
     <div class="wrap-container">
+      <?php lifetime_faqs(); ?>
+    </div>
+    <div class="wrap-container sec-cta-wrapper">
       <?php
         $link_cafes_category = esc_url(get_term_link('cafes', 'product_cat'));
         banner_oscuro('ENCUENTRA EL CAFÉ QUE MÁS TE GUSTE', 'productos-cafe-cta.png', $link_cafes_category);

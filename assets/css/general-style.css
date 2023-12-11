@@ -114,6 +114,19 @@ hr {
   line-height: normal;
 }
 
+/* Estilos para tableta */
+@media (max-width: 770px) {
+  .desktop-h1 {
+    font-size: 38px;
+  }
+  .desktop-h2 {
+    font-size: 20px;
+  }
+  .desktop-parrafo {
+    font-size: 15px;
+  }
+}
+
 
 /*--------------------------------------------------------------
 ## Botones
@@ -150,6 +163,11 @@ hr {
   margin: auto;
 }
 
+@media(max-width: 770px) {
+  .wrap-container {
+    padding: 0 50px;
+  }
+}
 
 /*--------------------------------------------------------------
 ## Navegación Principal
@@ -234,6 +252,36 @@ hr {
   flex-direction: column;
 }
 
+.nav-desktop .icon-menu-hamburger {
+  display: none;
+}
+
+@media (max-width: 770px) {
+  .nav-desktop .wrap-container {
+    height: 60px;
+  }
+  .nav-desktop .main-menu {
+    display: none;
+  }
+  .nav-desktop .wrap-container {
+    position: relative;
+  }
+  .nav-desktop .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+  }
+  .nav-desktop .logo img {
+    height: 35px;
+  }
+  .nav-desktop .icon-menu-hamburger {
+    display: flex;
+    align-items: center;
+  }
+}
+
 /*--------------------------------------------------------------
 ## Footer general
 --------------------------------------------------------------*/
@@ -267,22 +315,39 @@ footer.wrap-grande {
 /*--------------------------------------------------------------
 ## Sección de Trazabilidad (parte de ella esta en el .php)
 --------------------------------------------------------------*/
-.sec-trazabilidad {
+.sec-banner-oscuro {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding-top: 99px;
+  min-height: 670px;
 }
 
-.sec-trazabilidad .cta {
+.sec-banner-oscuro .cta {
   display: flex;
   flex-direction: column;
   gap: 28px;
   align-items: center;
 }
 
-.sec-trazabilidad .cta h2 {
+.sec-banner-oscuro .cta h2 {
   width: 840px;
   text-align: center;
+}
+
+.sec-banner-oscuro img {
+  width: 970px;
+}
+
+@media (max-width: 770px) {
+  .sec-banner-oscuro .cta h2 {
+    width: 620px;
+  }
+  .sec-banner-oscuro img {
+    width: 644px;
+  }
+  .sec-banner-oscuro {
+    min-height: 520px;
+  }
 }

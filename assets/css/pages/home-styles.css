@@ -1,6 +1,15 @@
 /*--------------------------------------------------------------
-## Sección HERO (parte de ella esta en el .php)
+## Sección HERO 
+   ¡INFO! -> el estilo que define el fondo esta en el header
 --------------------------------------------------------------*/
+.sec-hero {
+  height: 828px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
 .sec-hero .wrap-container {
   display: flex;
   flex-wrap: wrap;
@@ -13,6 +22,15 @@
 .sec-hero .txt-hero {
   color: var(--Fondo);
   width: 730px;
+}
+
+@media (max-width: 770px) {
+  .sec-hero {
+    height: 600px;
+  }
+  .sec-hero .txt-hero {
+    width: 473px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -44,6 +62,12 @@
 }
 
 
+@media (max-width: 770px) {
+  .deco {
+    opacity: 0;
+  }
+}
+
 /*--------------------------------------------------------------
 ## Sección de Cuidamos de ti y el medio ambiente
 --------------------------------------------------------------*/
@@ -52,13 +76,13 @@
   flex-wrap: wrap;
   padding-block: 160px;
   flex-direction: column;
-  gap: 160px;
+  row-gap: 160px;
 }
 
 .sec-cuidamos .sec-part {
   display: flex;
   flex-wrap: nowrap;
-  gap: 150px;
+  column-gap: 150px;
   align-items: start;
 }
 
@@ -66,7 +90,7 @@
   width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  row-gap: 25px;
   position: sticky;
   top: 105px;
 }
@@ -75,6 +99,22 @@
   position: absolute;
   right: 0px;
   bottom: 0px;
+}
+
+@media (max-width: 770px) {
+  .sec-cuidamos {
+    padding-block: 110px;
+    row-gap: 110px;
+  }
+  .sec-cuidamos .sec-part {
+    column-gap: 40px;
+  }
+  .sec-cuidamos .sec-part img {
+    width: 302px;
+  }
+  .sec-cuidamos .sec-part .wrapper-text {
+    width: 302px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -93,17 +133,52 @@
   gap: 40px;
 }
 
-.sec-categories .cards>div {
+.sec-categories .cards .card-category {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 40px;
   background-color: var(--Marron-Claro);
   padding: 38px;
 }
-
+.sec-categories .cards .card-category img {
+  width: 324px;
+  height: 324px;
+  object-fit: cover;
+}
 .sec-categories .cards .btn-primary {
   width: 100%;
 }
+
+@media (max-width: 770px) {
+  .sec-categories {
+    padding-top: 102px;
+    padding-bottom: 110px;
+  }
+  .sec-categories .cards {
+    overflow-x: scroll;
+    padding-bottom: 28px;
+  }
+  .sec-categories .cards .card-category {
+    padding: 20px;
+    gap: 30px;
+    
+  }
+  .sec-categories .cards .card-category img {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+
+/*--------------------------------------------------------------
+## Sección de Trazabilidad
+--------------------------------------------------------------*/
+@media (max-width: 770px) {
+  .sec-trazabilidad-wrapper {
+    padding: 0;
+  }
+}
+
 
 /*--------------------------------------------------------------
 ## Sección de Productos destacados
@@ -135,27 +210,39 @@
   right: 80px;
 }
 
+@media(max-width: 770px) {
+  .sec-prod-dest {
+    padding-top: 102px;
+    padding-bottom: 192px;
+    row-gap: 52px;
+  }
+  .divider-prod-desc-reviews {
+    display: none;
+  }
+}
+
+
 /*--------------------------------------------------------------
 ## Sección de Reviews de clientes
 --------------------------------------------------------------*/
 .sec-reviews {
-  padding: 160px 0;
+  padding-block: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 89px;
+  row-gap: 89px;
 }
 
 .sec-reviews .reviews {
   display: grid;
   grid-auto-flow: column;
-  gap: 40px;
+  column-gap: 40px;
   width: 1060px;
 }
 
 .reviews .review {
   display: grid;
-  gap: 20px;
+  row-gap: 20px;
 }
 
 .reviews .review>div {
@@ -175,3 +262,25 @@
   right: 0px;
 }
 
+@media (max-width: 770px) {
+  .sec-reviews {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .sec-reviews .reviews {
+    width: 100%;
+  }
+  .divider-reviews-cta {
+    display: none;
+  }
+}
+
+
+/*--------------------------------------------------------------
+## Sección de CTA
+--------------------------------------------------------------*/
+@media (max-width: 770px) {
+  .sec-cta-wrapper {
+    padding: 0;
+  }
+}

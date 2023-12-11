@@ -34,3 +34,10 @@
 .sec-faq .faqs .faq.active>div img {
   transform: rotate(180deg);
 }
+
+
+@media (max-width: 770px) {
+  .sec-faq {
+    width: 100%;
+  }
+}

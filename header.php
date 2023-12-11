@@ -8,18 +8,12 @@
 
     <style>
       .sec-hero {
-        height: 828px;
         background-image: url(
           "<?php echo get_template_directory_uri(); ?>/assets/imgs/heroover.jpg"
         );
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        overflow: hidden;
       }
 
-      .sec-trazabilidad {
-        min-height: 670px;
+      .sec-banner-oscuro {
         background-image: url(
           "<?php echo get_template_directory_uri(); ?>/assets/imgs/fondo-yute.jpg"
         );
@@ -32,11 +26,17 @@
   <body>
     <nav class="wrap-grande nav-desktop">
       <div class="wrap-container">
-        <a href="<?php echo home_url(); ?>">
-            <img
+        <div class="icon-menu-hamburger">
+          <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.83337 5V6.5625H21.5834V5H2.83337ZM2.83337 12.0833V13.6458H21.5834V12.0833H2.83337ZM2.83337 19.1667V20.7292H21.5834V19.1667H2.83337Z" fill="black"/>
+          </svg>
+        </div>
+
+        <a href="<?php echo home_url(); ?>" class="logo">
+          <img
             src="<?php echo get_template_directory_uri(); ?>/assets/svg/logo-inline.svg"
             alt="Logo de Lifetime Coffee" height="50px"
-            >
+          />
         </a>
 
         <?php
