@@ -24,7 +24,7 @@
   width: 730px;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 850px) {
   .sec-hero {
     height: 600px;
   }
@@ -62,7 +62,7 @@
 }
 
 
-@media (max-width: 770px) {
+@media (max-width: 850px) {
   .deco {
     opacity: 0;
   }
@@ -101,7 +101,7 @@
   bottom: 0px;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 850px) {
   .sec-cuidamos {
     padding-block: 110px;
     row-gap: 110px;
@@ -149,7 +149,7 @@
   width: 100%;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 850px) {
   .sec-categories {
     padding-top: 102px;
     padding-bottom: 110px;
@@ -173,7 +173,7 @@
 /*--------------------------------------------------------------
 ## Sección de Trazabilidad
 --------------------------------------------------------------*/
-@media (max-width: 770px) {
+@media (max-width: 850px) {
   .sec-trazabilidad-wrapper {
     padding: 0;
   }
@@ -210,7 +210,7 @@
   right: 80px;
 }
 
-@media(max-width: 770px) {
+@media(max-width: 850px) {
   .sec-prod-dest {
     padding-top: 102px;
     padding-bottom: 192px;
@@ -262,7 +262,7 @@
   right: 0px;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 850px) {
   .sec-reviews {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -279,7 +279,7 @@
 /*--------------------------------------------------------------
 ## Sección de CTA
 --------------------------------------------------------------*/
-@media (max-width: 770px) {
+@media (max-width: 850px) {
   .sec-cta-wrapper {
     padding: 0;
   }

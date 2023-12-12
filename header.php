@@ -51,7 +51,7 @@
 
         <div class="nav-actions">
           <a href="" class="action-search">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/svg/30x30-lupa.svg">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/svg/30x30-lupa.svg" class="icon30">
           </a>
           <?php
           if (is_plugin_active( 'woocommerce/woocommerce.php' )): 
@@ -61,9 +61,28 @@
               <span class="desktop-span num-items" id="cart-num-items">
                 <?php echo WC()->cart->get_cart_contents_count(); ?>
               </span>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/svg/30x30-carrito.svg">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/svg/30x30-carrito.svg" class="icon30">
             </a>
           <?php endif; ?>
         </div>
+      </div>
+    </nav>
+    <nav class="nav-movil">
+      <div class="content">
+        <div class="icon-close-menu">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.58295 3.75042L20.0821 20.2496M3.58295 20.2496L20.0821 3.75042" stroke="black" stroke-width="2.11111"/>
+          </svg>
+        </div>
+
+        <?php
+          wp_nav_menu(array(
+            'menu_id' => 'popup-menu',
+            'theme_location' => 'top-desktop',
+            'container' => '',
+            'link_before' => '<span class="desktop-parrafo">',
+            'link_after' => '</span>',
+          ));
+        ?>
       </div>
     </nav>
