@@ -120,7 +120,22 @@ hr {
     font-size: 38px;
   }
   .desktop-h2 {
+    font-size: 27px;
+  }
+  .desktop-parrafo {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 430px) {
+  .desktop-h1 {
+    font-size: 27px;
+  }
+  .desktop-h2 {
     font-size: 20px;
+  }
+  .desktop-parrafo-grande {
+    font-size: 15px;
   }
   .desktop-parrafo {
     font-size: 15px;
@@ -169,6 +184,11 @@ hr {
   }
   .icon30 {
     width: 25px;
+  }
+}
+@media(max-width: 430px) {
+  .wrap-container {
+    padding: 0 20px;
   }
 }
 
@@ -235,7 +255,7 @@ hr {
 
 .nav-desktop .nav-actions {
   display: flex;
-  gap: 35px;
+  column-gap: 35px;
 }
 .nav-desktop .nav-actions .action-cart {
   position: relative;
@@ -284,6 +304,9 @@ hr {
     display: flex;
     align-items: center;
   }
+  .nav-desktop .nav-actions {
+    column-gap: 25px;
+  }
   .nav-desktop .nav-actions a {
     display: flex;
     align-items: center;
@@ -311,10 +334,11 @@ body.active-mobile-menu .nav-movil {
 .nav-movil .content {
   display: flex;
   width: 438px;
-  height: 1136px;
-  padding: 17px 50px;
+  height: 100vh;
+  padding-block: 17px;
   flex-direction: column;
   align-items: flex-start;
+  margin: 0;
   gap: 35px;
   background: var(--Fondo, #F1EEEA);
 }
@@ -329,6 +353,7 @@ body.active-mobile-menu .nav-movil {
   padding-block: 20px;
   align-items: center;
   justify-content: space-between;
+  text-transform: uppercase;
 }
 .nav-movil .content #popup-menu svg {
   transition: transform 0.25s ease-in;
@@ -346,6 +371,15 @@ body.active-mobile-menu .nav-movil {
 }
 .nav-movil .content #popup-menu .sub-menu span {
   color: var(--Texto-Secundario);
+}
+
+@media (max-width: 430px) {
+  .nav-movil .content {
+    width: 295px;
+  }
+  .nav-movil .content #popup-menu .sub-menu a {
+    padding-left: 35px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -384,6 +418,11 @@ footer.wrap-grande {
     row-gap: 51px;
   }
 }
+@media (max-width: 430px) {
+  footer.wrap-grande {
+    margin-top: 90px;
+  }
+}
 
 /*--------------------------------------------------------------
 ## Sección de Trazabilidad (parte de ella esta en el .php)
@@ -400,12 +439,12 @@ footer.wrap-grande {
 .sec-banner-oscuro .cta {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  row-gap: 28px;
   align-items: center;
+  width: 840px;
 }
 
 .sec-banner-oscuro .cta h2 {
-  width: 840px;
   text-align: center;
 }
 
@@ -414,13 +453,30 @@ footer.wrap-grande {
 }
 
 @media (max-width: 850px) {
-  .sec-banner-oscuro .cta h2 {
+  .sec-banner-oscuro {
+    padding-left: 50px;
+    padding-right: 50px;
+    min-height: 520px;
+  }
+  .sec-banner-oscuro .cta {
     width: 620px;
   }
   .sec-banner-oscuro img {
-    max-width: 644px;
+    width: 100%;
   }
   .sec-banner-oscuro {
     min-height: 520px;
+  }
+}
+
+@media (max-width: 430px) {
+  .sec-banner-oscuro {
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 460px;
+  }
+  .sec-banner-oscuro .cta {
+    width: 100%;
+    padding: 0 20px;
   }
 }

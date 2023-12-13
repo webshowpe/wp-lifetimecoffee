@@ -12,10 +12,12 @@
 
 .sec-hero .wrap-container {
   display: flex;
+  height: 100%;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 260px;
+  justify-content: center;
+  /* margin-top: 260px; */
   gap: 28px;
 }
 
@@ -33,10 +35,20 @@
   }
 }
 
+@media (max-width: 430px) {
+  .sec-hero .wrap-container {
+    align-items: center;
+  }
+  .sec-hero .txt-hero {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
 /*--------------------------------------------------------------
 ## Sección Envíos a todo el Perú
 --------------------------------------------------------------*/
-
 .sec-envios-scroll {
   overflow: hidden;
   border-top: 1px solid var(--Bordes);
@@ -61,10 +73,15 @@
   }
 }
 
-
 @media (max-width: 850px) {
   .deco {
     opacity: 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .wrapper-envios-scroll {
+    gap: 80px;
   }
 }
 
@@ -117,6 +134,26 @@
   }
 }
 
+@media (max-width: 430px) {
+  .sec-cuidamos {
+    padding-top: 84px;
+    padding-bottom: 91px;
+  }
+  .sec-cuidamos .sec-part {
+    flex-wrap: wrap;
+    row-gap: 35px;
+  }
+  .sec-cuidamos .sec-part .wrapper-text {
+    position: static;
+    order: 1;
+    row-gap: 20px;
+  }
+  .sec-cuidamos .sec-part img {
+    width: 100%;
+    order: 2;
+  }
+}
+
 /*--------------------------------------------------------------
 ## Sección de Categorias
 --------------------------------------------------------------*/
@@ -153,6 +190,7 @@
   .sec-categories {
     padding-top: 102px;
     padding-bottom: 110px;
+    row-gap: 52px;
   }
   .sec-categories .cards {
     overflow-x: scroll;
@@ -161,7 +199,6 @@
   .sec-categories .cards .card-category {
     padding: 20px;
     gap: 30px;
-    
   }
   .sec-categories .cards .card-category img {
     width: 250px;
@@ -169,6 +206,13 @@
   }
 }
 
+@media (max-width: 430px) {
+  .sec-categories {
+    padding-top: 83px;
+    padding-bottom: 89px;
+    row-gap: 34px;
+  }
+}
 
 /*--------------------------------------------------------------
 ## Sección de Trazabilidad
@@ -218,6 +262,14 @@
   }
   .divider-prod-desc-reviews {
     display: none;
+  }
+}
+
+@media(max-width: 430px) {
+  .sec-prod-dest {
+    padding-top: 87px;
+    padding-bottom: 143px;
+    row-gap: 34px;
   }
 }
 
@@ -272,6 +324,20 @@
   }
   .divider-reviews-cta {
     display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .sec-reviews {
+    row-gap: 34px;
+  }
+  .sec-reviews .reviews {
+    grid-auto-flow: row;
+    row-gap: 38px;
+  }
+  .sec-reviews .reviews .review img {
+    width: 50px;
+    height: 50px;
   }
 }
 

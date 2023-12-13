@@ -68,7 +68,7 @@
       </div>
     </nav>
     <nav class="nav-movil">
-      <div class="content">
+      <div class="wrap-container content">
         <div class="icon-close-menu">
           <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.58295 3.75042L20.0821 20.2496M3.58295 20.2496L20.0821 3.75042" stroke="black" stroke-width="2.11111"/>

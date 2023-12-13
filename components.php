@@ -56,21 +56,21 @@ function lifetime_faqs() {
         <div class="faq">
           <div>
             <p class="desktop-parrafo-grande">¿Hacen envíos a todo el Perú?</p>
-            <img src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
+            <img class="icon30" src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
           </div>
           <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit consectetur totam saepe id quae, voluptate, obcaecati temporibus alias unde dolore voluptatem aperiam placeat possimus! Labore est repudiandae sequi veniam aliquid?</p>
         </div>
         <div class="faq">
           <div>
             <p class="desktop-parrafo-grande">¿En cuantos días llega mi pedido?</p>
-            <img src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
+            <img class="icon30" src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
           </div>
           <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit consectetur totam saepe id quae, voluptate, obcaecati temporibus alias unde dolore voluptatem aperiam placeat possimus! Labore est repudiandae sequi veniam aliquid?</p>
         </div>
         <div class="faq">
           <div>
             <p class="desktop-parrafo-grande">¿Cómo se manejan las devoluciones?</p>
-            <img src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
+            <img class="icon30" src="<?php echo get_template_directory_uri() . "/assets/svg/30x30-arrow-down.svg" ?>" alt="">
           </div>
           <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit consectetur totam saepe id quae, voluptate, obcaecati temporibus alias unde dolore voluptatem aperiam placeat possimus! Labore est repudiandae sequi veniam aliquid?</p>
         </div>
