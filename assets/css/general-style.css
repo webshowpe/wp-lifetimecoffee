@@ -407,15 +407,20 @@ body.active-mobile-menu .nav-movil {
   justify-content: center;
   padding-top: 28px;
   padding-bottom: 28px;
+  border-top: 1px solid var(--Bordes-Marcados, #AFAFAF);
 }
 footer.wrap-grande {
   margin-top: 160px;
+  border-top: 1px solid var(--Bordes-Marcados, #AFAFAF);
 }
 
 @media (max-width: 850px) {
   .sec-footer {
     flex-wrap: wrap;
     row-gap: 51px;
+  }
+  footer.wrap-grande {
+    margin-top: 110px;
   }
 }
 @media (max-width: 430px) {
@@ -425,7 +430,7 @@ footer.wrap-grande {
 }
 
 /*--------------------------------------------------------------
-## Sección de Trazabilidad (parte de ella esta en el .php)
+## Sección de Banner (parte de ella esta en el .php)
 --------------------------------------------------------------*/
 .sec-banner-oscuro {
   display: flex;

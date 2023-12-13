@@ -48,9 +48,9 @@ function tarjeta_producto($title, $url_image, $url, $price) {
 }
 
 
-function lifetime_faqs() {
+function lifetime_faqs($css_class = "") {
   ?>
-  <div class="wrap-container sec-faq">
+    <div class="sec-faq <?= $css_class; ?>">
       <h2 class="desktop-h2">ACLAREMOS TUS DUDAS</h2>
       <div class="faqs">
         <div class="faq">

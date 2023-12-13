@@ -27,9 +27,16 @@
     }
   ?>
 
-  
   <div class="wrap-grande">
     <div class="wrap-container sec-hero-product">
+      <div class="hidden-infocard-header">
+        <h1 class="desktop-h2">
+          <?php echo $product->get_name(); ?>
+        </h1>
+        <span class="desktop-h2">
+          <?php echo wc_price($product->get_price()); ?>
+        </span>
+      </div>
       <div class="izq-image">
         <img src="<?= wp_get_attachment_image_url($product->get_image_id(), 'large') ?>" alt="<?= $product->get_name() ?>">
       </div>
@@ -168,7 +175,7 @@
         </div>
       </div>
     </div>
-    <hr />
+    <hr class="divider-hero-desc"/>
     <div class="wrap-container sec-prod-desc">
       <h3 class="desktop-h2">DESCRIPCIÓN</h3>
       <p>
@@ -177,14 +184,16 @@
     </div>
     <hr />
     <?php if(has_term($coffee_category_id, 'product_cat', $product->id)):?>
-      <div class="wrap-container" style="padding-top: 160px;">
+      <div class="wrap-container sec-trazabilidad">
         <?php
           $link_trazabilidad = esc_url(get_permalink(18));
           banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png', $link_trazabilidad);
         ?>
       </div>
     <?php endif; ?>
-    <?php lifetime_faqs(); ?>
+    <div class="wrap-container">
+      <?php lifetime_faqs('detail-product-faqs'); ?>
+    </div>
     <hr/>
     <div class="wrap-container sec-prod-relacionados">
       <h3 class="desktop-h2">TAMBIÉN TE PUEDE INTERESAR</h3>

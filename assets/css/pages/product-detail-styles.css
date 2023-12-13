@@ -1,3 +1,9 @@
+@media (max-width: 850px) {
+  hr {
+    display: none;
+  }
+}
+
 /*--------------------------------------------------------------
 ## Sección Hero del producto
 --------------------------------------------------------------*/
@@ -7,6 +13,13 @@
   display: flex;
   gap: 40px;
   align-items: center;
+}
+
+.hidden-infocard-header {
+  display: none;
+}
+.hidden-infocard-header h1 {  
+  text-align: center;
 }
 
 .izq-image {
@@ -21,7 +34,6 @@
 .der-details {
   background-color: var(--Fondo-Banner);
   color: var(--Fondo);
-  min-width: 620px;
 }
 
 .der-details .infocard-header {
@@ -54,6 +66,7 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 15px;
+  justify-content: space-between;
 }
 .der-details .minicards .minicard {
   display: flex;
@@ -138,19 +151,85 @@ input[type=number] {
 }
 
 
+@media (max-width: 850px) {
+  .sec-hero-product {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    padding-top: 100px;
+    padding-bottom: 0px;
+  }
+  .hidden-infocard-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    row-gap: 7px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--Bordes, #C7C7C7);
+  }
+  .izq-image {
+    width: 473px;
+  }
+  .der-details {
+    width: 100%;
+  }
+  .der-details .infocard-header {
+    display: none;
+  }
+  .der-details .infocard-body {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 45px 59px;
+    /* width: 525px; */
+  }
+}
+
+
 /*--------------------------------------------------------------
 ## Sección Descripción del Producto
 --------------------------------------------------------------*/
 .sec-prod-desc {
-  width: 840px;
+  max-width: 840px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  padding: 149px 0 155px 0;
+  padding-top: 149px;
+  padding-bottom: 155px;
 }
 .sec-prod-desc p {
   text-align: center;
+}
+
+@media (max-width: 850px) {
+  .sec-prod-desc {
+    padding-top: 192px;
+    padding-bottom: 195px;
+  }
+}
+
+/*--------------------------------------------------------------
+## Sección Trazabilidad
+--------------------------------------------------------------*/
+.sec-trazabilidad {
+  padding-top: 160px;
+}
+@media (max-width: 850px) {
+  .sec-trazabilidad {
+    padding: 0px;
+  }
+}
+
+/*--------------------------------------------------------------
+## Sección Preguntas frecuentes
+--------------------------------------------------------------*/
+@media (max-width: 850px) {
+  .wrap-container .detail-product-faqs {
+    padding-block: 192px; 
+    gap: 52px;
+  }
 }
 
 
@@ -167,4 +246,16 @@ input[type=number] {
 .related-products {
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 850px) {
+  .sec-prod-relacionados {
+    padding-top: 0px;
+    gap: 52px;
+  }
+  .related-products {
+    overflow-x: scroll;
+    column-gap: 40px;
+    padding-bottom: 28px;
+  }
 }

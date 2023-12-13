@@ -1,5 +1,4 @@
 <footer class="wrap-grande">
-      <hr/>
       <div class="wrap-container sec-footer">
         <div class="col">
           <h4 class="desktop-parrafo" style="font-weight: 700;">UBICACIÓN</h4>
@@ -37,7 +36,6 @@
           ?>
         </div>
       </div>
-      <hr/>
       <div class="wrap-container sec-copyright">
         <span class="desktop-span">© LIFETIME COFFEE <?php echo date('Y'); ?> - TODOS LOS DERECHOS RESERVADOS</span>
       </div>
