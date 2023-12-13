@@ -427,6 +427,9 @@ footer.wrap-grande {
   footer.wrap-grande {
     margin-top: 90px;
   }
+  .sec-copyright span {
+    font-size: 10px;
+  }
 }
 
 /*--------------------------------------------------------------

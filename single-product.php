@@ -29,7 +29,7 @@
 
   <div class="wrap-grande">
     <div class="wrap-container sec-hero-product">
-      <div class="hidden-infocard-header">
+      <div class="wrap-aux hidden-infocard-header">
         <h1 class="desktop-h2">
           <?php echo $product->get_name(); ?>
         </h1>
@@ -37,7 +37,7 @@
           <?php echo wc_price($product->get_price()); ?>
         </span>
       </div>
-      <div class="izq-image">
+      <div class="wrap-aux izq-image">
         <img src="<?= wp_get_attachment_image_url($product->get_image_id(), 'large') ?>" alt="<?= $product->get_name() ?>">
       </div>
       <div class="der-details">

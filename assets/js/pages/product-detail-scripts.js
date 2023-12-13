@@ -97,7 +97,7 @@ linkAddToCart.addEventListener("click", (e) => {
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.01 2.50879L5.99625 13.5113L0.99 8.50504L0 9.49504L5.99625 15.5025L18 3.49879L17.01 2.50879Z" fill="black"/>
             </svg>
             <span class="desktop-parrafo">
-                Producto agregado correctamente
+                Agregado correctamente
             </span>
         `;
         linkAddToCart.style.backgroundColor = "#B0D0A1";
