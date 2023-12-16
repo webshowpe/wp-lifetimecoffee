@@ -3,8 +3,10 @@
     <div class="wrap-container">
       <h1 class="desktop-h1 txt-hero">Café de calidad para toda la vida</h1>
       <?php
-        $link_cafes_category = esc_url(get_term_link('cafes', 'product_cat'));
-        btn_primary('COMPRAR CAFÉ', $link_cafes_category);
+        get_template_part("template-parts/btn-primary", "", [
+          "link" => get_term_link('cafes', 'product_cat'),
+          "text" => "COMPRAR CAFÉ"
+        ]);
       ?>
     </div>
   </div>
@@ -64,7 +66,10 @@
             ?>
               <div class="card-category" link="<?php echo get_term_link($categoria); ?>">
                 <img src=<?= $url_thumbnail ?> alt="Categoría de <?= $categoria->name ?>" />
-                <?php btn_primary($categoria->name, get_term_link($categoria)); ?>
+                <?php get_template_part("template-parts/btn-primary", "", [
+                  "link" => get_term_link($categoria),
+                  "text" => $categoria->name
+                ]); ?>
               </div>
           <?php endforeach; ?>
         </div>
@@ -72,8 +77,12 @@
     </div>
     <div class="wrap-container sec-trazabilidad-wrapper">
       <?php
-        $link = esc_url(get_permalink(18));
-        banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png', $link); 
+        get_template_part("template-parts/banner", "oscuro", array(
+          'title' => '¿CÓMO PRODUCIMOS NUESTRO CAFÉ?',
+          'link' => get_permalink(18),
+          'cta' => 'SABER MÁS',
+          'imagename' => 'cucharas-trazabilidad.png'
+        ));
       ?>
     </div>
     <div class="wrap-container sec-prod-dest">
@@ -109,12 +118,12 @@
               global $product;
               $product = wc_get_product(get_the_ID());
 
-              tarjeta_producto(
-                title:      get_the_title(),
-                url_image:  get_the_post_thumbnail_url(),
-                url:        get_permalink(),
-                price:      $product->get_regular_price()
-              );
+              get_template_part('template-parts/card', 'product', array(
+                "title" => get_the_title(),
+                "link_image" => get_the_post_thumbnail_url(),
+                "link_to" => get_permalink(),
+                "price" => $product->get_regular_price()
+              ));
             }
 
             wp_reset_postdata();
@@ -165,12 +174,16 @@
 
   <div class="wrap-grande">
     <div class="wrap-container">
-      <?php lifetime_faqs(); ?>
+      <?php get_template_part("template-parts/faqs"); ?>
     </div>
     <div class="wrap-container sec-cta-wrapper">
       <?php
-        $link_cafes_category = esc_url(get_term_link('cafes', 'product_cat'));
-        banner_oscuro('ENCUENTRA EL CAFÉ QUE MÁS TE GUSTE', 'productos-cafe-cta.png', $link_cafes_category);
+        get_template_part("template-parts/banner", "oscuro", array(
+          'title' => 'ENCUENTRA EL CAFÉ QUE MÁS TE GUSTE',
+          'link' => get_term_link('cafes', 'product_cat'),
+          'cta' => 'COMPRAR CAFÉ',
+          'imagename' => 'productos-cafe-cta.png'
+        ));
       ?>
     </div>
   </div>

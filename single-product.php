@@ -186,32 +186,40 @@
     <?php if(has_term($coffee_category_id, 'product_cat', $product->id)):?>
       <div class="wrap-container sec-trazabilidad">
         <?php
-          $link_trazabilidad = esc_url(get_permalink(18));
-          banner_oscuro('¿CÓMO PRODUCIMOS NUESTRO CAFÉ?', 'cucharas-trazabilidad.png', $link_trazabilidad);
+          get_template_part("template-parts/banner", "oscuro", array(
+            'title' => '¿CÓMO PRODUCIMOS NUESTRO CAFÉ?',
+            'link' => get_permalink(18),
+            'cta' => 'SABER MÁS',
+            'imagename' => 'cucharas-trazabilidad.png'
+          ));
         ?>
       </div>
     <?php endif; ?>
     <div class="wrap-container">
-      <?php lifetime_faqs('detail-product-faqs'); ?>
+      <?php 
+        get_template_part(
+          "template-parts/faqs", "",
+          array("css_class" => "detail-product-faqs")
+        );
+      ?>
     </div>
     <hr/>
     <div class="wrap-container sec-prod-relacionados">
       <h3 class="desktop-h2">TAMBIÉN TE PUEDE INTERESAR</h3>
       <div class="related-products">
       <?php 
-      
         $productos_relacionados = wc_get_related_products($product->id, 4);
 
         if (!empty($productos_relacionados)) {
           foreach ($productos_relacionados as $producto_id) {
             $producto_relacionado = wc_get_product($producto_id);
             
-            tarjeta_producto(
-              title:      $producto_relacionado->get_name(),
-              url_image:  wp_get_attachment_image_url($producto_relacionado->get_image_id()),
-              url:        $producto_relacionado->get_permalink(),
-              price:      $producto_relacionado->get_regular_price()
-            );
+            get_template_part('template-parts/card', 'product', array(
+              "title" => $producto_relacionado->get_name(),
+              "link_image" => wp_get_attachment_image_url($producto_relacionado->get_image_id()),
+              "link_to" => $producto_relacionado->get_permalink(),
+              "price" => $producto_relacionado->get_regular_price()
+            ));
           }
         }
       ?>

@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-.sec-faq .faqs .faq>div img {
+.sec-faq .faqs .faq>div svg {
   transition: transform 0.25s ease-in;
 }
 
@@ -33,7 +33,7 @@
 }
 
 /* Cuando esta activo */
-.sec-faq .faqs .faq.active>div img {
+.sec-faq .faqs .faq.active>div svg {
   transform: rotate(180deg);
 }
 

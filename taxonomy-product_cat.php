@@ -9,6 +9,18 @@
       <?php single_cat_title();?>
     </h1>
   </header>
+  <div class="wrap-container sec-filter-mobile">
+    <select name="" id="" class="categories">
+      <option value="">CAFES</option>
+      <option value="">DERIVADOS DEL CAFÉ</option>
+      <option value="">OTROS PRODUCTOS</option>
+    </select>
+    <div class="filter">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M18 1.125V3.0498L11.25 9.7998V16.875H6.75V9.7998L0 3.0498V1.125H18ZM16.875 2.25H1.125V2.5752L7.875 9.3252V15.75H10.125V9.3252L16.875 2.5752V2.25Z" fill="#4A4A4A"/>
+      </svg>
+    </div>
+  </div>
   <div class="wrap-container sec-body">
     <aside class="sidebar">
       <div class="filter-category">
@@ -95,14 +107,13 @@
           while (have_posts()) {
             the_post();
             $product = wc_get_product();
-            $urlimage_product = wp_get_attachment_url($product->get_image_id());
 
-            tarjeta_producto(
-              title: $product->get_name(),
-              url_image: $urlimage_product,
-              url: $product->get_permalink(),
-              price: $product->get_regular_price()
-            );
+            get_template_part('template-parts/card', 'product', array(
+              "title" => $product->get_name(),
+              "link_image" => wp_get_attachment_url($product->get_image_id()),
+              "link_to" => $product->get_permalink(),
+              "price" => $product->get_regular_price()
+            ));
           }
         ?>
       </div>
