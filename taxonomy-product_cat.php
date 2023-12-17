@@ -1,5 +1,19 @@
 <?php get_header(); ?>
 
+<div class="mobile-popup-filter">
+  <div class="content">
+    <h2 class="desktop-h2">Filtros de búsqueda</h2>
+    <div class="filtros">
+      <?php get_template_part("template-parts/filters", "coffee", [
+        "prefix" => "mobile",
+      ]); ?>
+    </div>
+    <a href="" class="btn-primary">
+      <span class="desktop-parrafo">Aceptar</span>
+    </a>
+  </div>
+</div>
+
 <div class="wrap-grande">
   <header class="wrap-container sec-cat-hero">
     <span class="desktop-parrafo" style="color: var(--Texto-Secundario);">
@@ -10,15 +24,11 @@
     </h1>
   </header>
   <div class="wrap-container sec-filter-mobile">
-    <select name="" id="" class="categories">
-      <option value="">CAFES</option>
-      <option value="">DERIVADOS DEL CAFÉ</option>
-      <option value="">OTROS PRODUCTOS</option>
-    </select>
     <div class="filter">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
         <path d="M18 1.125V3.0498L11.25 9.7998V16.875H6.75V9.7998L0 3.0498V1.125H18ZM16.875 2.25H1.125V2.5752L7.875 9.3252V15.75H10.125V9.3252L16.875 2.5752V2.25Z" fill="#4A4A4A"/>
       </svg>
+      <span class="desktop-span">FILTRAR</span>
     </div>
   </div>
   <div class="wrap-container sec-body">
@@ -47,58 +57,9 @@
         <?php endif; ?>
       </div>
 
-      <?php if (is_tax('product_cat', 'cafes')): ?>
-        <?php
-        // Obtener los atributos de los productos de WooCommerce
-        $atributos_productos = wc_get_attribute_taxonomies();
-        
-        if ($atributos_productos): ?>
-        
-        <?php foreach ($atributos_productos as $atributo): ?>
-            <?php 
-            $nom_atributo = $atributo->attribute_name;
-
-            if ($nom_atributo == "molienda" || $nom_atributo == "proceso" || $nom_atributo == "tostado"):
-            ?>
-            <div class="filter-<?= $atributo->attribute_name; ?>">
-              <h4 class="desktop-parrafo" style="font-weight: 700; text-transform: uppercase;">
-                <?= $atributo->attribute_label; ?>
-              </h4>
-              <?php 
-              // Obtener los terms cada atributo de producto woocommerce
-              $terms = get_terms(array(
-                'taxonomy' => 'pa_' . $atributo->attribute_name,
-                'hide_empty' => false,
-              ));
-              
-              if ($terms && !is_wp_error( $terms )): ?>
-                <div class="opciones">
-                  <?php foreach ($terms as $term): ?>
-
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                      <div class="custom-check">
-                        <input type="checkbox" id=<?= $term->slug ?> data-term-id=<?= $term->term_id; ?> name=<?= $term->taxonomy ?> value=<?= $term->slug ?>>
-                        <svg class="icon-check" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M17.01 2.50879L5.99625 13.5113L0.99 8.50504L0 9.49504L5.99625 15.5025L18 3.49879L17.01 2.50879Z" fill="#4A4A4A"/>
-                        </svg>
-                      </div>
-                      <label for=<?= $term->slug ?>>
-                        <?= $term->name ?>
-                      </label>
-                    </div>
-                    
-                  <?php endforeach; ?>
-                </div>
-              <?php endif; ?>
-            </div>
-
-            <?php endif; ?>
-
-          <?php endforeach; ?>
-        <?php else: ?>
-          <span>No hay taxonomías de atributos disponibles.</span>
-        <?php endif; ?>
-      <?php endif; ?>
+      <?php get_template_part("template-parts/filters", "coffee", [
+        "prefix" => "desktop"
+      ]); ?>
     </aside>
     <section class="product-section">
     <?php if (have_posts()) : ?>

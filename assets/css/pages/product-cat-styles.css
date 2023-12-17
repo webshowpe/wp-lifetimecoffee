@@ -26,24 +26,74 @@
 --------------------------------------------------------------*/
 .sec-filter-mobile {
   display: none;
+  margin-bottom: 60px;
 }
 
 .sec-filter-mobile .filter {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  column-gap: 22px;
+  padding: 15px;
   height: 60px;
-  border-radius: 50px;
+  border-radius: 3px;
   border: 2px solid var(--Bordes, #C7C7C7);
+  color: var(--Texto-Secundario);
 }
 
 @media (max-width: 850px) {
   .sec-filter-mobile {
     display: flex;
-    justify-content: space-between;
   }
 }
+
+/*--------------------------------------------------------------
+## PopUp de filtros para mobiles
+--------------------------------------------------------------*/
+.mobile-popup-filter {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 50px 50px;
+  background: rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(3.5px);
+  z-index: 100;
+}
+.mobile-popup-filter .content {
+  background-color: var(--Fondo);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 77px;
+  padding: 52px 48px 60px 48px;
+  border-radius: 3px;
+  width: 100%;
+}
+.mobile-popup-filter .content .filtros {
+  display: flex;
+  flex-wrap: wrap;
+}
+.mobile-popup-filter .content .filtros > div {
+  flex-grow: 1;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.mobile-popup-filter .btn-primary {
+  align-self: flex-end;
+}
+
+/*--------------------------------------------------------------
+## Sección PopUp de Filtros
+--------------------------------------------------------------*/
+body.active-popup-filter .mobile-popup-filter {
+  display: block;
+}
+
 
 /*--------------------------------------------------------------
 ## Sección sidebar para filtros
@@ -122,6 +172,12 @@
   opacity: 0;
 }
 
+@media (max-width: 850px) {
+  .sec-body .sidebar {
+    display: none;
+  }
+}
+
 /*--------------------------------------------------------------
 ## Sección de lista de productos
 --------------------------------------------------------------*/
@@ -134,10 +190,13 @@
 .sec-body .product-section .product-list {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   column-gap: 40px;
   row-gap: 45px;
 }
+.sec-body .product-section .product-list .card-product {
+  flex: 1;
+}
+
 /*--------------------------------------------------------------
 ## Sección de páginación
 --------------------------------------------------------------*/

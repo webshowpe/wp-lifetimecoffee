@@ -4,7 +4,6 @@
 --------------------------------------------------------------*/
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
 
-
 checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", function() {
         if (checkbox.checked) {
@@ -19,7 +18,6 @@ checkboxes.forEach((checkbox) => {
 ## Sección: Filtros de una categoría
 ## Funcionalidad: Marcar de color la categoria actual
 --------------------------------------------------------------*/
-
 let urlActual = window.location.href;
 let segmentos = urlActual.split("/");
 let categoriaActualSlug = segmentos[segmentos.length - 2];
@@ -29,6 +27,32 @@ let categorias = document.querySelectorAll("a.category");
 categorias.forEach((category) => {
     if (category.id === categoriaActualSlug) {
         category.classList.add("selected");
+    }
+});
+
+/*--------------------------------------------------------------
+## Sección MOVIL: Filtros de una categoría
+## Funcionalidad: Mostrar / Ocultar popup de filtros de café
+--------------------------------------------------------------*/
+let filterButton = document.querySelector(".sec-filter-mobile .filter");
+let buttonAceptar = document.querySelector(".mobile-popup-filter .btn-primary");
+
+filterButton.addEventListener("click", () => {
+    document.body.classList.add("active-popup-filter");
+})
+buttonAceptar.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.body.classList.remove("active-popup-filter");
+});
+
+/*--------------------------------------------------------------
+## Sección MOVIL: Filtros de una categoría
+## Funcionalidad: Ocultar popup de filtros cuando se da click en el area oscura
+--------------------------------------------------------------*/
+const $popupFilters = document.querySelector(".mobile-popup-filter");
+$popupFilters.addEventListener("click", (event) => {
+    if (event.target.classList.contains("mobile-popup-filter")) {
+        document.body.classList.remove("active-popup-filter");
     }
 });
 
