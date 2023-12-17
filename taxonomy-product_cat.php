@@ -23,14 +23,16 @@
       <?php single_cat_title();?>
     </h1>
   </header>
-  <div class="wrap-container sec-filter-mobile">
-    <div class="filter">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <path d="M18 1.125V3.0498L11.25 9.7998V16.875H6.75V9.7998L0 3.0498V1.125H18ZM16.875 2.25H1.125V2.5752L7.875 9.3252V15.75H10.125V9.3252L16.875 2.5752V2.25Z" fill="#4A4A4A"/>
-      </svg>
-      <span class="desktop-span">FILTRAR</span>
+  <?php if (is_tax('product_cat', 'cafes')): ?>
+    <div class="wrap-container sec-filter-mobile">
+      <div class="filter">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M18 1.125V3.0498L11.25 9.7998V16.875H6.75V9.7998L0 3.0498V1.125H18ZM16.875 2.25H1.125V2.5752L7.875 9.3252V15.75H10.125V9.3252L16.875 2.5752V2.25Z" fill="#4A4A4A"/>
+        </svg>
+        <span class="desktop-span">FILTRAR</span>
+      </div>
     </div>
-  </div>
+  <?php endif; ?>
   <div class="wrap-container sec-body">
     <aside class="sidebar">
       <div class="filter-category">

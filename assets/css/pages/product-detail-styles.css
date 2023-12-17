@@ -55,6 +55,25 @@
   text-transform: uppercase;
 }
 
+@media (max-width: 850px) {
+  .hidden-infocard-header .product-price bdi,
+  .hidden-infocard-header .product-price bdi span {
+    color: var(--Texto-Secundario, #4A4A4A);
+    font-family: Fahkwang;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+  } 
+}
+@media (max-width: 430px) {
+  .hidden-infocard-header .product-price bdi,
+  .hidden-infocard-header .product-price bdi span {
+    font-size: 20px;
+  }
+}
+
 .der-details .infocard-body {
   display: flex;
   flex-direction: column;

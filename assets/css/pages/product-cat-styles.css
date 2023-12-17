@@ -87,13 +87,27 @@
   align-self: flex-end;
 }
 
-/*--------------------------------------------------------------
-## Sección PopUp de Filtros
---------------------------------------------------------------*/
 body.active-popup-filter .mobile-popup-filter {
   display: block;
 }
 
+@media (max-width: 430px) {
+  .mobile-popup-filter {
+    padding-left: 20px;
+    padding-right: 20px;
+  }  
+  .mobile-popup-filter .content {
+    row-gap: 37px;
+    padding: 34px 30px 40px 30px;
+  }
+  .mobile-popup-filter .content .filtros {
+    row-gap: 45px;
+    column-gap: 30px;
+  }
+  .mobile-popup-filter .content .filtros > div {
+    width: 120px;
+  }
+}
 
 /*--------------------------------------------------------------
 ## Sección sidebar para filtros
@@ -193,8 +207,23 @@ body.active-popup-filter .mobile-popup-filter {
   column-gap: 40px;
   row-gap: 45px;
 }
-.sec-body .product-section .product-list .card-product {
-  flex: 1;
+
+@media (max-width: 850px) {
+  .sec-body .product-section .product-list {
+    column-gap: 40px;
+    row-gap: 35px;
+  }
+  
+  .sec-body .product-section .product-list .card-product {
+    flex: 1;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 430px) {
+  .sec-body .product-section .product-list .card-product {
+    max-width: 100%;
+  }
 }
 
 /*--------------------------------------------------------------

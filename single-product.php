@@ -33,7 +33,7 @@
         <h1 class="desktop-h2">
           <?php echo $product->get_name(); ?>
         </h1>
-        <span class="desktop-h2">
+        <span class="desktop-h2 product-price">
           <?php echo wc_price($product->get_price()); ?>
         </span>
       </div>
