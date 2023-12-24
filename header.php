@@ -7,6 +7,28 @@
     <?php wp_head(); ?>
 
     <style>
+      /*--------------------------------------------------------------
+      ## Definir fuentes
+      --------------------------------------------------------------*/
+      @font-face {
+        font-family: 'Fahkwang';
+        font-style: normal;
+        font-weight: 700;
+        src: url("<?php echo get_template_directory_uri(); ?>/assets/fonts/Fahkwang-Bold.woff2");
+      }
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: url("<?php echo get_template_directory_uri(); ?>/assets/fonts/DMSans-Regular.woff2");
+      }
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: bold;
+        font-weight: 700;
+        src: url("<?php echo get_template_directory_uri(); ?>/assets/fonts/DMSans-Bold.woff2");
+      }
+
       .sec-hero {
         background-image: url(
           "<?php echo get_template_directory_uri(); ?>/assets/imgs/heroover.jpg"
