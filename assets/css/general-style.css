@@ -47,6 +47,13 @@ hr {
   border: 0;
 }
 
+input, select, textarea {
+  padding: 0.5em;
+  border: 1px solid var(--Bordes-Marcados);
+  border-radius: 3px;
+  outline: none;
+}
+
 .loader {
   animation: rotate 3s linear infinite;
 }
@@ -170,6 +177,10 @@ hr {
   max-width: 1440px; /* Max-width del figma */
   padding: 0 80px;
   margin: auto;
+}
+
+.woocommerce {
+  margin-top: 60px;
 }
 
 @media(max-width: 850px) {
