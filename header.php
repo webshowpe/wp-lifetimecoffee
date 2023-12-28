@@ -42,7 +42,7 @@
 
       .sec-banner-oscuro {
         background-image: url(
-          "<?php echo get_template_directory_uri(); ?>/assets/imgs/fondo-yute.jpg"
+          "<?php echo get_template_directory_uri(); ?>/assets/imgs/fondo-yute.webp"
         );
         background-position: center;
         background-repeat: no-repeat;

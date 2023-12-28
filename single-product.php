@@ -190,7 +190,7 @@
             'title' => '¿CÓMO PRODUCIMOS NUESTRO CAFÉ?',
             'link' => get_permalink(18),
             'cta' => 'SABER MÁS',
-            'imagename' => 'cucharas-trazabilidad.png'
+            'imagename' => 'cucharas-trazabilidad.webp'
           ));
         ?>
       </div>

@@ -81,12 +81,12 @@
           'title' => '¿CÓMO PRODUCIMOS NUESTRO CAFÉ?',
           'link' => get_permalink(18),
           'cta' => 'SABER MÁS',
-          'imagename' => 'cucharas-trazabilidad.png'
+          'imagename' => 'cucharas-trazabilidad.webp'
         ));
       ?>
     </div>
     <div class="wrap-container sec-prod-dest">
-      <img class="deco deco-cafe-3" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe3.png" alt="">
+      <img class="deco deco-cafe-3" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe2.png" alt="">
       <h2 class="desktop-h2">LOS PRODUCTOS DESTACADOS</h2>
       <div class="cards-products">
         <?php
@@ -182,7 +182,7 @@
           'title' => 'ENCUENTRA EL CAFÉ QUE MÁS TE GUSTE',
           'link' => get_term_link('cafes', 'product_cat'),
           'cta' => 'COMPRAR CAFÉ',
-          'imagename' => 'productos-cafe-cta.png'
+          'imagename' => 'productos-cafe-cta.webp'
         ));
       ?>
     </div>
