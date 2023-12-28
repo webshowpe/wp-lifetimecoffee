@@ -38,7 +38,11 @@
         </span>
       </div>
       <div class="wrap-aux izq-image">
-        <img src="<?= wp_get_attachment_image_url($product->get_image_id(), 'large') ?>" alt="<?= $product->get_name() ?>">
+        <?php if ($product->get_image_id()): ?>
+          <img src="<?= wp_get_attachment_image_url($product->get_image_id(), 'large') ?>" alt="<?= $product->get_name() ?>">
+        <?php else: ?> 
+          <img src="<?php echo esc_url(wc_placeholder_img_src("large")); ?>" alt="Thumbnail por defecto">
+        <?php endif; ?>
       </div>
       <div class="der-details">
         <div class="infocard-header">
@@ -216,7 +220,7 @@
             
             get_template_part('template-parts/card', 'product', array(
               "title" => $producto_relacionado->get_name(),
-              "link_image" => wp_get_attachment_image_url($producto_relacionado->get_image_id()),
+              "thumbnail_id" => $producto_relacionado->get_image_id(),
               "link_to" => $producto_relacionado->get_permalink(),
               "price" => $producto_relacionado->get_regular_price()
             ));

@@ -73,7 +73,7 @@
 
             get_template_part('template-parts/card', 'product', array(
               "title" => $product->get_name(),
-              "link_image" => wp_get_attachment_url($product->get_image_id()),
+              "thumbnail_id" => $product->get_image_id(),
               "link_to" => $product->get_permalink(),
               "price" => $product->get_regular_price()
             ));

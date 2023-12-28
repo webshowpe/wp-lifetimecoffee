@@ -60,17 +60,22 @@
       if (!empty($categorias_woocom)): ?>
         <div class="cards">
           <?php foreach($categorias_woocom as $categoria):?>
-            <?php
-              $thumbnail_id = get_term_meta($categoria->term_id, 'thumbnail_id', true);
-              $url_thumbnail = wp_get_attachment_url($thumbnail_id);
-            ?>
-              <div class="card-category" link="<?php echo get_term_link($categoria); ?>">
-                <img src=<?= $url_thumbnail ?> alt="Categoría de <?= $categoria->name ?>" />
-                <?php get_template_part("template-parts/btn-primary", "", [
-                  "link" => get_term_link($categoria),
-                  "text" => $categoria->name
-                ]); ?>
-              </div>
+            <?php $thumbnail_id = get_term_meta($categoria->term_id, 'thumbnail_id', true); ?>
+            <div class="card-category" link="<?php echo get_term_link($categoria); ?>">
+              <?php
+                if (wp_get_attachment_image($thumbnail_id, 'medium') != ''):
+                  echo wp_get_attachment_image($thumbnail_id, 'medium', array(
+                    'alt' => "Categoría de " . $categoria->name
+                  ));
+              ?>
+              <?php else: ?>
+                  <img src=<?= wc_placeholder_img_src() ?> alt="Categoría de <?= $categoria->name ?>" /> 
+              <?php endif; ?>
+              <?php get_template_part("template-parts/btn-primary", "", [
+                "link" => get_term_link($categoria),
+                "text" => $categoria->name
+              ]); ?>
+            </div>
           <?php endforeach; ?>
         </div>
       <?php endif; ?>
@@ -120,7 +125,7 @@
 
               get_template_part('template-parts/card', 'product', array(
                 "title" => get_the_title(),
-                "link_image" => get_the_post_thumbnail_url(),
+                "thumbnail_id" => get_post_thumbnail_id( get_the_ID() ),
                 "link_to" => get_permalink(),
                 "price" => $product->get_regular_price()
               ));

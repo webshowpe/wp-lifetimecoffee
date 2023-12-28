@@ -159,6 +159,7 @@
 --------------------------------------------------------------*/
 .sec-categories {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   padding-top: 150px;
   padding-bottom: 160px;
@@ -229,6 +230,7 @@
 --------------------------------------------------------------*/
 .sec-prod-dest {
   display: flex;
+  flex-direction: column;
   position: relative;
   flex-wrap: wrap;
   padding-top: 150px;
@@ -240,6 +242,7 @@
   display: grid;
   gap: 40px;
   grid-auto-flow: column;
+  justify-content: start;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   padding-bottom: 28px;
