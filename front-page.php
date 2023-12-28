@@ -82,9 +82,11 @@
     </div>
     <div class="wrap-container sec-trazabilidad-wrapper">
       <?php
+        $id_pag_trazabilidad = esc_attr(get_option('lf_settings_theme')['id_pag_traz']);
+
         get_template_part("template-parts/banner", "oscuro", array(
           'title' => '¿CÓMO PRODUCIMOS NUESTRO CAFÉ?',
-          'link' => get_permalink(18),
+          'link' => get_permalink($id_pag_trazabilidad),
           'cta' => 'SABER MÁS',
           'imagename' => 'cucharas-trazabilidad.webp'
         ));

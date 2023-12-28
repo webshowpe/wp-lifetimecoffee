@@ -160,7 +160,6 @@
 .sec-categories {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   padding-top: 150px;
   padding-bottom: 160px;
   gap: 90px;
@@ -232,7 +231,6 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  flex-wrap: wrap;
   padding-top: 150px;
   padding-bottom: 160px;
   gap: 90px;

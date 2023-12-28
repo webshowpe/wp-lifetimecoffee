@@ -2,7 +2,7 @@
   <?php
     $product = wc_get_product(get_the_ID());
 
-    $coffee_category_id = 16;
+    $coffee_category_id = esc_attr(get_option('lf_settings_theme')['id_cat_coffee']);
 
     function obtener_atributo_producto($product, $atributo) {
       // Obtener todos los atributos de un determinado producto
@@ -190,9 +190,11 @@
     <?php if(has_term($coffee_category_id, 'product_cat', $product->id)):?>
       <div class="wrap-container sec-trazabilidad">
         <?php
+          $id_pag_trazabilidad = esc_attr(get_option('lf_settings_theme')['id_pag_traz']);
+
           get_template_part("template-parts/banner", "oscuro", array(
             'title' => '¿CÓMO PRODUCIMOS NUESTRO CAFÉ?',
-            'link' => get_permalink(18),
+            'link' => get_permalink($id_pag_trazabilidad),
             'cta' => 'SABER MÁS',
             'imagename' => 'cucharas-trazabilidad.webp'
           ));

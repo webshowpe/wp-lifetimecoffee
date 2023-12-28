@@ -3,6 +3,7 @@ require "inc/scripts.php";
 require "inc/menus.php";
 require "inc/custom-fields.php";
 require "inc/ajax-filter-cat.php";
+require "inc/custom-settings.php";
 
 /*--------------------------------------------------------------
 ## Declarar compatibilidad con Woocommerce

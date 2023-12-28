@@ -24,6 +24,7 @@
 
 .izq-image {
   width: 100%;
+  max-width: 619px;
 }
 .izq-image img {
   width: 100%;
