@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lifetime Coffee</title>
+    <title>
+      <?php if (is_front_page()): ?>
+        <?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>
+      <?php else: ?>
+        <?php wp_title("|", true, "right"); ?> <?php bloginfo('name'); ?>
+      <?php endif; ?>
+    </title>
     <link
       rel="icon"
       type="image/x-icon"
@@ -19,18 +25,21 @@
         font-family: 'Fahkwang';
         font-style: normal;
         font-weight: 700;
+        font-display: swap;
         src: url("<?php echo get_template_directory_uri(); ?>/assets/fonts/Fahkwang-Bold.woff2");
       }
       @font-face {
         font-family: 'DM Sans';
         font-style: normal;
         font-weight: 400;
+        font-display: swap;
         src: url("<?php echo get_template_directory_uri(); ?>/assets/fonts/DMSans-Regular.woff2");
       }
       @font-face {
         font-family: 'DM Sans';
         font-style: bold;
         font-weight: 700;
+        font-display: swap;
         src: url("<?php echo get_template_directory_uri(); ?>/assets/fonts/DMSans-Bold.woff2");
       }
 
