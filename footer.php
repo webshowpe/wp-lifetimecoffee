@@ -1,4 +1,4 @@
-<footer class="wrap-grande">
+    <footer class="wrap-grande">
       <div class="wrap-container sec-footer">
         <div class="col">
           <h4 class="desktop-parrafo" style="font-weight: 700;">UBICACIÓN</h4>
@@ -10,10 +10,14 @@
           <h4 class="desktop-parrafo" style="font-weight: 700;">CONTACTO</h4>
           <ul>
             <li>
-              <a href="#"><span class="desktop-parrafo">+51 943 496 591</span></a>
+              <a href="tel:+51943496591">
+                <span class="desktop-parrafo">+51 943 496 591</span>
+              </a>
             </li>
             <li>
-              <a href="#"><span class="desktop-parrafo">contacto@lifetimecoffee.pe</span></a>
+              <a href="mailto:lifetimecoffeevr@gmail.com">
+                <span class="desktop-parrafo">lifetimecoffeevr@gmail.com</span>
+              </a>
             </li>
           </ul>
         </div>

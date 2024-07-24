@@ -42,13 +42,6 @@
         font-display: swap;
         src: url("<?php echo get_template_directory_uri(); ?>/assets/fonts/DMSans-Bold.woff2");
       }
-
-      .sec-hero {
-        background-image: url(
-          "<?php echo get_template_directory_uri(); ?>/assets/imgs/heroover.jpg"
-        );
-      }
-
       .sec-banner-oscuro {
         background-image: url(
           "<?php echo get_template_directory_uri(); ?>/assets/imgs/fondo-yute.webp"

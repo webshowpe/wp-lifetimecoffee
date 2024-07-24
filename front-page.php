@@ -1,5 +1,10 @@
 <?php get_header(); ?>
   <div class="wrap-grande sec-hero">
+    <video autoplay muted loop id="myVideo">
+      <source
+        src="<?php echo get_template_directory_uri(); ?>/assets/videos/herovideo.webm"
+        type="video/webm">
+    </video>
     <div class="wrap-container">
       <h1 class="desktop-h1 txt-hero">Café de calidad para toda la vida</h1>
       <?php
@@ -150,22 +155,32 @@
       <div class="reviews">
         <div class="review">
           <div>
-            <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur. Sit nunc at turpis aliquam risus. Libero viverra id dui volutpat amet vitae ornare vel eros.</p>
-            <p class="desktop-parrafo">Persona #1</p>
+            <p class="desktop-parrafo">
+              Es increíble poder ver de dónde viene cada producto gracias a la trazabilidad en blockchain. Me da mucha más confianza en lo que estoy comprando.
+            </p>
+            <p class="desktop-parrafo name">
+              Carlos Serrano
+            </p>
           </div>
           <img
-            src="<?php echo get_template_directory_uri() . "/assets/imgs/persona1.png" ?>"
+            src="<?php echo get_template_directory_uri() . "/assets/imgs/carlos-serrano.jpg" ?>"
             alt="Cliente #1"
+            class="img-review"
           />
         </div>
         <div class="review">
           <div>
-            <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur. Sit nunc at turpis aliquam risus. Libero viverra id dui volutpat amet vitae ornare vel eros.</p>
-            <p class="desktop-parrafo">Persona #1</p>
+            <p class="desktop-parrafo">
+            La trazabilidad en blockchain es una gran innovación. Saber que puedo verificar el origen de mis productos en cualquier momento es tranquilizador y eficiente.
+            </p>
+            <p class="desktop-parrafo name">
+              Jorge Acevedo Ramirez
+            </p>
           </div>
           <img 
-            src="<?php echo get_template_directory_uri() . "/assets/imgs/persona2.png" ?>"
+            src="<?php echo get_template_directory_uri() . "/assets/imgs/jorge-acevedo.jpg" ?>"
             alt="Cliente #2"
+            class="img-review"
           />
         </div>
       </div>

@@ -15,7 +15,20 @@ itemsSubmenu.forEach((item) => {
     );
 });
 
-    
+/*--------------------------------------------------------------
+## Sección: Navegación Desktop y Móvil
+## Funcionalidad: Abrir una nueva ventana para enlaces externos a la web
+--------------------------------------------------------------*/
+const menuLinks = document.querySelectorAll("#menu-menu-principal a");
+
+menuLinks.forEach(link => {
+    // Verifica si el enlace es externo
+    if (link.hostname !== window.location.hostname) {
+      link.setAttribute("target", "_blank");
+    }
+});
+
+
 /*--------------------------------------------------------------
 ## Sección: Navegación Móvil
 ## Funcionalidad: Activar y ocultar menu móvil con los iconos

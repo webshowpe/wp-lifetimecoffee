@@ -10,6 +10,7 @@
 }
 
 :root {
+  /* Tokens antiguos no especificos */
   --Fondo: #F1EEEA;
   --Texto-Principal: #000000;
   --Texto-Secundario: #4A4A4A;
@@ -20,6 +21,46 @@
   --Verde-Claro: #B0D0A1;
   --Marron-Claro: #C3BB91;
   --Fondo-Banner: #1B1B1B;
+
+  /* Color Tokens: Primitivos */
+  --yellow-100: #F2D66E;
+  --yellow-200: #F3CF49;
+  --green-100: #B0D0A1;
+  --brown-50: #F1EEEA;
+  --brown-200: #C3BB91;
+  --neutral-50: #C7C7C7;
+  --neutral-100: #AFAFAF;
+  --neutral-200: #494949;
+  --neutral-300: #1B1B1B;
+  --neutral-400: #000000;
+
+  /* Color Tokens: Especificos */
+  --color-bg-button-default: var(--yellow-200);
+  --color-bg-button-hover: var(--yellow-100);
+  --color-bg-button-success: var(--green-100);
+  --color-text-button: var(--neutral-400);
+  --color-bg-page: var(--brown-50);
+  --color-bg-badge: var(--yellow-200);
+  --color-stroke-icon: var(--neutral-400);
+  --color-stroke-form-primary: var(--neutral-100);
+  --color-stroke-form-secondary: var(--neutral-50);
+  --color-bg-card-default: var(--green-100);
+  --color-bg-section: var(--neutral-300);
+  --color-text-primary: var(--neutral-400);
+  --color-text-secondary: var(--neutral-200);
+  --color-text-primary-dark: var(--brown-50);
+  --color-text-secondary-dark: var(--neutral-50);
+
+  /* Spacing Tokens: Primitivos (base 4) */
+  --spacing-20: 80px;
+  --spacing-12: 48px;
+  --spacing-5: 20px;
+
+  /* Spacing Tokens: Especificos */
+  --padding-desktop: var(--spacing-20);
+  --padding-tablet: var(--spacing-12);
+  --padding-phone: var(--spacing-5);
+
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -175,7 +216,7 @@ input, select, textarea {
 
 .wrap-container {
   max-width: 1440px; /* Max-width del figma */
-  padding: 0 80px;
+  padding: 0 var(--padding-desktop);
   margin: auto;
 }
 
@@ -185,7 +226,7 @@ input, select, textarea {
 
 @media(max-width: 850px) {
   .wrap-container {
-    padding: 0 50px;
+    padding: 0 var(--padding-tablet);
   }
   .icon30 {
     width: 25px;
@@ -193,7 +234,7 @@ input, select, textarea {
 }
 @media(max-width: 430px) {
   .wrap-container {
-    padding: 0 20px;
+    padding: 0 var(--padding-phone);
   }
 }
 
