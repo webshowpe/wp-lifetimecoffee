@@ -9,7 +9,7 @@ itemsSubmenu.forEach((item) => {
     const itemTriggerSubmenu = item.querySelector("a");
     itemTriggerSubmenu.insertAdjacentHTML(
         "beforeend",
-        `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg" id="arrow-down">
+        `<svg class="rotate" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg" id="arrow-down">
         <path d="M9 14.469L1 6.46897L1.96897 5.5L9 12.531L16.031 5.5L17 6.46897L9 14.469Z" fill="black"/>
         </svg>`
     );
@@ -17,14 +17,22 @@ itemsSubmenu.forEach((item) => {
 
 /*--------------------------------------------------------------
 ## Sección: Navegación Desktop y Móvil
-## Funcionalidad: Abrir una nueva ventana para enlaces externos a la web
+## Funcionalidad: Abrir en una nueva ventana los enlaces externos y agregarle un icono
 --------------------------------------------------------------*/
-const menuLinks = document.querySelectorAll("#menu-menu-principal a");
+const menuLinks = document.querySelectorAll("nav a");
 
 menuLinks.forEach(link => {
-    // Verifica si el enlace es externo
-    if (link.hostname !== window.location.hostname) {
-      link.setAttribute("target", "_blank");
+    if (link.href) {
+        // Verifica si el enlace es externo
+        if (link.hostname !== window.location.hostname) {
+            link.setAttribute("target", "_blank");
+            link.insertAdjacentHTML(
+              "beforeend",
+              `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path id="Vector" d="M7.8575 4.6625H2V15.3125H12.65V9.455M9.9875 2H15.3125M15.3125 2V7.325M15.3125 2L7.8575 9.455" stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>`
+            )
+        }
     }
 });
 

@@ -275,14 +275,14 @@ input, select, textarea {
 .nav-desktop .main-menu li>a {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
-.nav-desktop .main-menu li svg {
+.nav-desktop .main-menu li svg.rotate {
   transition: transform 0.25s ease-in-out;
 }
 
-.nav-desktop .main-menu li:hover svg {
+.nav-desktop .main-menu li:hover svg.rotate {
   transform: rotate(180deg);
 }
 
@@ -401,10 +401,10 @@ body.active-mobile-menu .nav-movil {
   justify-content: space-between;
   text-transform: uppercase;
 }
-.nav-movil .content #popup-menu svg {
+.nav-movil .content #popup-menu svg.rotate {
   transition: transform 0.25s ease-in;
 }
-.nav-movil .content #popup-menu .menu-item-has-children.active svg {
+.nav-movil .content #popup-menu .menu-item-has-children.active svg.rotate {
   transform: rotate(180deg);
 }
 .nav-movil .content #popup-menu .sub-menu {
