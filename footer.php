@@ -62,6 +62,9 @@
         <span class="desktop-span">
           © LIFETIME COFFEE <?php echo date('Y'); ?> - TODOS LOS DERECHOS RESERVADOS
         </span>
+        <a href="https://diegoamorin.com/links/" target="_blank" class="desktop-span no-icon-link">
+          DESIGN BY AMORIN
+        </a>
       </div>
     </footer>
     <?php wp_footer(); ?>

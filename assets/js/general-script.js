@@ -28,7 +28,10 @@ menuLinks.forEach(link => {
         const isExternal = link.hostname !== window.location.hostname;
         const isMailOrTel = link.href.startsWith('mailto:') || link.href.startsWith('tel:');
 
-        if (isExternal && !isMailOrTel) {
+        // Verifica si el enlace tiene la clase 'no-icon-link'
+        const hasNoIconClass = link.classList.contains('no-icon-link');
+
+        if (isExternal && !isMailOrTel && !hasNoIconClass) {
             link.setAttribute("target", "_blank");
             link.insertAdjacentHTML(
               "beforeend",

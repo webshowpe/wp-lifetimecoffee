@@ -89,7 +89,6 @@
 }
 
 
-
 /*--------------------------------------------------------------
 ## Sección de Productos destacados
 --------------------------------------------------------------*/
@@ -162,7 +161,7 @@
 }
 
 .sec-part .wrapper-text p {
-  width: 550px;
+  max-width: 550px;
   color: var(--color-text-secondary);
 }
 
@@ -204,6 +203,11 @@
 .sec-categories .cards {
   display: flex;
   gap: 40px;
+  overflow-x: auto;
+  /* overscroll-behavior-inline: contain; */
+  padding-bottom: 28px;
+  /* Snap wrapper */
+  /* scroll-snap-type: inline mandatory; */
 }
 
 .sec-categories .cards .card-category {
@@ -227,10 +231,6 @@
     padding-top: 102px;
     padding-bottom: 110px;
     row-gap: 52px;
-  }
-  .sec-categories .cards {
-    overflow-x: scroll;
-    padding-bottom: 28px;
   }
   .sec-categories .cards .card-category {
     padding: 20px;
