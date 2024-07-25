@@ -272,8 +272,8 @@ input, select, textarea {
   transition: all 1s ease-in-out;
 }
 
-.nav-desktop .main-menu li>a {
-  display: flex;
+a {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
 }
@@ -447,6 +447,13 @@ body.active-mobile-menu .nav-movil {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.sec-footer svg path {
+  stroke: var(--color-text-secondary);
+}
+.sec-footer ul li a,
+.sec-footer ul li h4{
+  color: var(--color-text-secondary);
 }
 .sec-copyright {
   display: flex;

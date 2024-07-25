@@ -16,15 +16,19 @@ itemsSubmenu.forEach((item) => {
 });
 
 /*--------------------------------------------------------------
-## Sección: Navegación Desktop y Móvil
-## Funcionalidad: Abrir en una nueva ventana los enlaces externos y agregarle un icono
+## Sección: GENERAL
+## Funcionalidad: Hacer que todos los links externos se abran en una nueva pestaña 
+   y agregar un icono a cada uno de "external link"
 --------------------------------------------------------------*/
-const menuLinks = document.querySelectorAll("nav a");
+const menuLinks = document.querySelectorAll("a");
 
 menuLinks.forEach(link => {
     if (link.href) {
-        // Verifica si el enlace es externo
-        if (link.hostname !== window.location.hostname) {
+        // Verifica si el enlace es externo y no es un enlace mailto: o tel:
+        const isExternal = link.hostname !== window.location.hostname;
+        const isMailOrTel = link.href.startsWith('mailto:') || link.href.startsWith('tel:');
+
+        if (isExternal && !isMailOrTel) {
             link.setAttribute("target", "_blank");
             link.insertAdjacentHTML(
               "beforeend",
