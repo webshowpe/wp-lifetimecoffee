@@ -26,28 +26,87 @@
     </ul>
   </div>
 
+  <div class="wrap-container sec-prod-dest">
+    <img
+      class="deco deco-cafe-3"
+      src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe2.png"
+      alt=""
+    />
+    <h2 class="desktop-h2">LOS PRODUCTOS DESTACADOS</h2>
+    <div class="cards-products">
+      <?php
+        /* Obtener 16 últimos productos destacados
+          Referencia: https://stackoverflow.com/a/46247028
+        */
+        $tax_query[] = array(
+          'taxonomy' => 'product_visibility',
+          'field' => 'name',
+          'terms' => 'featured',
+          'operator' => 'IN',
+        );
+
+        $query = new WP_Query([
+          'post_type' => 'product', // Tipo de publicación para productos de WooCommerce
+          'post_status' => 'publish',
+          'ignore_sticky_posts' => 1,
+          'posts_per_page' => 16, // Limitar a los 16 productos más recientes
+          'order_by' => 'date', // Ordenar por fecha
+          'order' => 'DESC', // En orden descendente (los más recientes primero)
+          'tax_query' => $tax_query
+        ]);
+
+        if ($query->have_posts()) {
+          while ($query->have_posts()) {
+            $query->the_post();
+            
+            // Obtener el objeto de producto de WooCommerce con el ID
+            global $product;
+            $product = wc_get_product(get_the_ID());
+
+            get_template_part('template-parts/card', 'product', array(
+              "title" => get_the_title(),
+              "thumbnail_id" => get_post_thumbnail_id( get_the_ID() ),
+              "link_to" => get_permalink(),
+              "price" => $product->get_regular_price()
+            ));
+          }
+
+          wp_reset_postdata();
+        } else {
+          echo "<span>No hay productos destacados disponibles</span>";
+        }
+      ?>
+    </div>
+  </div>
+
+  <hr/>
+
   <div class="wrap-grande">
-    <div class="wrap-container sec-cuidamos">
+    <div class="wrap-container sec-acerca">
       <div class="sec-part part-1">
         <img
-          src="<?php echo get_template_directory_uri(); ?>/assets/imgs/hombre-sujetando-taza.jpg"
+          src="<?php echo get_template_directory_uri(); ?>/assets/imgs/finca-don-lucho.jpg"
           alt="Mano sujetando una taza de café apoyado en una mesa" />
         <div class="wrapper-text">
-          <h2 class="desktop-h1">CUIDAMOS EL MEDIO AMBIENTE</h2>
-          <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur. Sit nunc at turpis aliquam risus. Libero viverra id dui volutpat amet vitae ornare vel eros.</p>
+          <h2 class="desktop-h2">FINCA DON LUCHO</h2>
+          <p class="desktop-parrafo">
+            Ubicada en el corazón de la reserva de biosfera "BIOAY", reconocida por la UNESCO, y en las coordenadas <a href="https://maps.app.goo.gl/S7UXjWkK1aTEnne19" target="_blank">10°46'23"S 75°16'19"W</a>, nuestra Finca "Don Lucho" se erige como un emblema de café de calidad y de una trazabilidad amigable con el medio ambiente.
+          </p>
         </div>
       </div>
       <div class="sec-part part-2">
         <img
-          src="<?php echo get_template_directory_uri(); ?>/assets/imgs/mujer-sujetando-taza.jpg"
+          src="<?php echo get_template_directory_uri(); ?>/assets/imgs/nuestro-equipo.jpg"
           alt="Mano sujetando una taza de café apoyado en una mesa" />
         <div class="wrapper-text">
-          <h2 class="desktop-h1">CUIDAMOS DE TI</h2>
-          <p class="desktop-parrafo">Lorem ipsum dolor sit amet consectetur. Sit nunc at turpis aliquam risus. Libero viverra id dui volutpat amet vitae ornare vel eros.</p>
+          <h2 class="desktop-h2">NUESTRO EQUIPO</h2>
+          <p class="desktop-parrafo">
+            Lucio Vargas, Jenny Vásquez y sus hijos, Franklin y Luis Vargas, comparten una visión de autosostenibilidad. Tras reflexionar sobre la pandemia de COVID-19 y la importancia de coexistir con la naturaleza, cultivan seis variedades de café, así como una amplia gama de frutas y árboles.
+          </p>
         </div>
       </div>
     </div>
-    <img class="deco deco-cafe" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe1.png" width="526px" height="auto" />
+    <!-- <img class="deco deco-cafe" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe1.png" width="526px" height="auto" /> -->
   </div>
 
   <hr/>
@@ -97,57 +156,7 @@
         ));
       ?>
     </div>
-    <div class="wrap-container sec-prod-dest">
-      <img class="deco deco-cafe-3" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/deco-cafe2.png" alt="">
-      <h2 class="desktop-h2">LOS PRODUCTOS DESTACADOS</h2>
-      <div class="cards-products">
-        <?php
-          /* Obtener 16 últimos productos destacados
-            Referencia: https://stackoverflow.com/a/46247028
-          */
-          $tax_query[] = array(
-            'taxonomy' => 'product_visibility',
-            'field' => 'name',
-            'terms' => 'featured',
-            'operator' => 'IN',
-          );
-
-          $query = new WP_Query([
-            'post_type' => 'product', // Tipo de publicación para productos de WooCommerce
-            'post_status' => 'publish',
-            'ignore_sticky_posts' => 1,
-            'posts_per_page' => 16, // Limitar a los 16 productos más recientes
-            'order_by' => 'date', // Ordenar por fecha
-            'order' => 'DESC', // En orden descendente (los más recientes primero)
-            'tax_query' => $tax_query
-          ]);
-
-          if ($query->have_posts()) {
-            while ($query->have_posts()) {
-              $query->the_post();
-              
-              // Obtener el objeto de producto de WooCommerce con el ID
-              global $product;
-              $product = wc_get_product(get_the_ID());
-
-              get_template_part('template-parts/card', 'product', array(
-                "title" => get_the_title(),
-                "thumbnail_id" => get_post_thumbnail_id( get_the_ID() ),
-                "link_to" => get_permalink(),
-                "price" => $product->get_regular_price()
-              ));
-            }
-
-            wp_reset_postdata();
-          } else {
-            echo "<span>No hay productos destacados disponibles</span>";
-          }
-        ?>
-      </div>
-    </div>
   </div>
-
-  <hr class="divider-prod-desc-reviews" />
 
   <div class="wrap-grande">
     <div class="wrap-container sec-reviews">
@@ -192,7 +201,7 @@
     />
   </div>
 
-  <hr class="divider-reviews-cta"/>
+  <hr />
 
   <div class="wrap-grande">
     <div class="wrap-container">

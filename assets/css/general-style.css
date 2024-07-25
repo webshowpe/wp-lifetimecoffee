@@ -52,15 +52,17 @@
   --color-text-secondary-dark: var(--neutral-50);
 
   /* Spacing Tokens: Primitivos (base 4) */
-  --spacing-20: 80px;
-  --spacing-12: 48px;
+  --spacing-4: 16;
   --spacing-5: 20px;
+  --spacing-12: 48px;
+  --spacing-20: 80px;
 
   /* Spacing Tokens: Especificos */
   --padding-desktop: var(--spacing-20);
   --padding-tablet: var(--spacing-12);
   --padding-phone: var(--spacing-5);
-
+  --spacing-title-element: var(--spacing-12);
+  --spacing-title-text: var(--spacing-4);
 }
 
 ::-moz-selection { /* Code for Firefox */

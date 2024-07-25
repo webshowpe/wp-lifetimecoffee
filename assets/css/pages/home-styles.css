@@ -88,74 +88,107 @@
   }
 }
 
+
+
 /*--------------------------------------------------------------
-## Sección de Cuidamos de ti y el medio ambiente
+## Sección de Productos destacados
 --------------------------------------------------------------*/
-.sec-cuidamos {
-  display: flex;
-  flex-wrap: wrap;
-  padding-block: 160px;
-  flex-direction: column;
-  row-gap: 160px;
-}
-
-.sec-cuidamos .sec-part {
-  display: flex;
-  flex-wrap: nowrap;
-  column-gap: 150px;
-  align-items: start;
-}
-
-.sec-cuidamos .sec-part .wrapper-text {
-  width: 400px;
+.sec-prod-dest {
   display: flex;
   flex-direction: column;
-  row-gap: 25px;
-  position: sticky;
-  top: 105px;
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  row-gap: 64px;
 }
 
-.deco-cafe {
+.sec-prod-dest .cards-products {
+  display: grid;
+  gap: 40px;
+  grid-auto-flow: column;
+  justify-content: start;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding-bottom: 28px;
+  /* Snap wrapper */
+  scroll-snap-type: inline mandatory;
+}
+
+.sec-prod-dest .deco-cafe-3 {
   position: absolute;
-  right: 0px;
-  bottom: 0px;
+  top: 0;
+  width: 475px;
+  right: 80px;
+}
+
+@media(max-width: 850px) {
+  .sec-prod-dest {
+    padding-top: 110px;
+    padding-bottom: 110px;
+    row-gap: 52px;
+  }
+}
+
+@media(max-width: 430px) {
+  .sec-prod-dest {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    row-gap: 34px;
+  }
+}
+
+
+/*--------------------------------------------------------------
+## Sección de Acerca de la finca y del equipo
+--------------------------------------------------------------*/
+.wrap-grande .sec-acerca {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  display: flex;
+  column-gap: 40px;
+}
+.sec-acerca > div {
+  flex: 1;
+}
+.sec-acerca .sec-part img {
+  width: 100%;
+}
+
+.sec-part .wrapper-text {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.sec-part .wrapper-text p {
+  width: 550px;
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 850px) {
-  .sec-cuidamos {
-    padding-block: 110px;
+  .wrap-grande .sec-acerca {
+    padding-top: 110px;
+    padding-bottom: 110px;
+    flex-direction: column;
     row-gap: 110px;
   }
-  .sec-cuidamos .sec-part {
-    column-gap: 40px;
-  }
-  .sec-cuidamos .sec-part img {
-    width: 302px;
-  }
-  .sec-cuidamos .sec-part .wrapper-text {
-    width: 302px;
+  .sec-part .wrapper-text p {
+    width: 90%;
   }
 }
 
 @media (max-width: 430px) {
-  .sec-cuidamos {
-    padding-top: 84px;
-    padding-bottom: 91px;
+  .wrap-grande .sec-acerca {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    row-gap: 90px;
   }
-  .sec-cuidamos .sec-part {
-    flex-wrap: wrap;
-    row-gap: 35px;
-  }
-  .sec-cuidamos .sec-part .wrapper-text {
-    position: static;
-    order: 1;
-    row-gap: 20px;
-  }
-  .sec-cuidamos .sec-part img {
+  .sec-part .wrapper-text p {
     width: 100%;
-    order: 2;
   }
 }
+
 
 /*--------------------------------------------------------------
 ## Sección de Categorias
@@ -163,9 +196,9 @@
 .sec-categories {
   display: flex;
   flex-direction: column;
-  padding-top: 150px;
+  padding-top: 100px;
   padding-bottom: 160px;
-  gap: 90px;
+  gap: 64px;
 }
 
 .sec-categories .cards {
@@ -228,57 +261,6 @@
 
 
 /*--------------------------------------------------------------
-## Sección de Productos destacados
---------------------------------------------------------------*/
-.sec-prod-dest {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding-top: 150px;
-  padding-bottom: 160px;
-  gap: 90px;
-}
-
-.sec-prod-dest .cards-products {
-  display: grid;
-  gap: 40px;
-  grid-auto-flow: column;
-  justify-content: start;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  padding-bottom: 28px;
-  /* Snap wrapper */
-  scroll-snap-type: inline mandatory;
-}
-
-.sec-prod-dest .deco-cafe-3 {
-  position: absolute;
-  top: 0;
-  width: 475px;
-  right: 80px;
-}
-
-@media(max-width: 850px) {
-  .sec-prod-dest {
-    padding-top: 102px;
-    padding-bottom: 192px;
-    row-gap: 52px;
-  }
-  .divider-prod-desc-reviews {
-    display: none;
-  }
-}
-
-@media(max-width: 430px) {
-  .sec-prod-dest {
-    padding-top: 87px;
-    padding-bottom: 143px;
-    row-gap: 34px;
-  }
-}
-
-
-/*--------------------------------------------------------------
 ## Sección de Reviews de clientes
 --------------------------------------------------------------*/
 .sec-reviews {
@@ -314,7 +296,7 @@
   border-radius: 100%;
 }
 
-.reviews .review>div {
+.reviews .review > div {
   display: grid;
   gap: 18px;
   padding: 45px 50px;
@@ -333,20 +315,20 @@
 
 @media (max-width: 850px) {
   .sec-reviews {
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 200px;
+    padding-bottom: 110px;
   }
   .sec-reviews .reviews {
     width: 100%;
     flex-direction: column;
-  }
-  .divider-reviews-cta {
-    display: none;
+    row-gap: 52px;
   }
 }
 
 @media (max-width: 430px) {
   .sec-reviews {
+    padding-top: 150px;
+    padding-bottom: 90px;
     row-gap: 34px;
   }
   .sec-reviews .reviews {
